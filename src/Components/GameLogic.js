@@ -4,15 +4,24 @@ import Table from "./Table";
 import "../styles.css";
 
 export default function GameLogic() {
-  const [game, setGame] = useState(1);
-  const [gameTotal, setGameTotal] = useState(0);
+  const [gameTotal, setGameTotal] = useState([]);
+
+  function computeScore(e) {
+    console.log(e.target.name);
+
+    setGameTotal([
+      ...gameTotal,
+      {
+        name: e.target.name,
+        value: e.target.value
+      }
+    ]);
+  }
+  console.log("STATE", gameTotal);
   return (
     <div>
       <h1>header</h1>
-      <Table />
-      <button className="button" onClick={() => setGameTotal()}>
-        Add game total
-      </button>
+      <Table computeScore={computeScore} />
     </div>
   );
 }
