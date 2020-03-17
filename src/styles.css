@@ -19,3 +19,10 @@ td {
 .button {
   border: 2px solid red;
 }
+
+.extraYahtzeeBox {
+  border: 1px solid black;
+  display: inline;
+  padding: 8%;
+  margin: 2%;
+}
