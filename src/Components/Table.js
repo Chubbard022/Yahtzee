@@ -330,38 +330,29 @@ function Table(props) {
           </tr>
           <tr>
             <th>BONUS</th>
-            <th>==></th>
-            <td>{props.gameTotal >= 63 ? 63 : null}</td>
+            <th onClick={props.test}>==></th>
+            <td>{props.gameBonus.gameOne}</td>
             <td>
-              {props.gameTotal >= 63 ? 63 : null}
+              {props.gameBonus.gameTwo}
               {/* <input className="gameBonus" name="gameTwo bonus" value="63" /> */}
             </td>
             <td>
-              {props.gameTotal >= 63 ? 63 : null}
+              {props.gameBonus.gameThree}
               {/* <input className="gameBonus" name="gameThree bonus" value="63" /> */}
             </td>
-            <td>
-              {props.gameTotal >= 63 ? 63 : null}
-              {/* <input className="gameBonus" name="gameFour bonus" value="63" /> */}
-            </td>
-            <td>
-              {props.gameTotal >= 63 ? 63 : null}
-              {/* <input className="gameBonus" name="gameFive bonus" value="63" /> */}
-            </td>
-            <td>
-              {props.gameTotal >= 63 ? 63 : null}
-              {/* <input className="gameBonus" name="gameSix bonus" value="63" /> */}
-            </td>
+            <td>{props.gameBonus.gameFour}</td>
+            <td>{props.gameBonus.gameFive}</td>
+            <td>{props.gameBonus.gameSix}</td>
           </tr>
           <tr>
             <th>TOTAL</th>
             <th> ==></th>
-            <td>{/*Compute the total of upper section */}</td>
-            <td>{/*Compute the total of upper section */}</td>
-            <td>{/*Compute the total of upper section */}</td>
-            <td>{/*Compute the total of upper section */}</td>
-            <td>{/*Compute the total of upper section */}</td>
-            <td>{/*Compute the total of upper section */}</td>
+            <td>{props.upperTotal.gameOne}</td>
+            <td>{props.upperTotal.gameTwo}</td>
+            <td>{props.upperTotal.gameThree}</td>
+            <td>{props.upperTotal.gameFour}</td>
+            <td>{props.upperTotal.gameFive}</td>
+            <td>{props.upperTotal.gameSix}</td>
           </tr>
         </table>
 
@@ -379,7 +370,7 @@ function Table(props) {
           </tr>
           <tr>
             <th>3 of a kind</th>
-            <td>add total of dice</td>
+            <td>add upperTotal of dice</td>
             <td>
               <input
                 className="input"
@@ -431,7 +422,7 @@ function Table(props) {
           </tr>
           <tr>
             <th>4 of a kind</th>
-            <td>add total of dice</td>
+            <td>add upperTotal of dice</td>
             <td>
               <input
                 className="input"
@@ -693,45 +684,135 @@ function Table(props) {
             <th>YAHTZEE BONUS</th>
             <td>100 per extra Yahtzee</td>
             <td className="extraYahtzee">
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
             </td>
             <td className="extraYahtzee">
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
             </td>
             <td className="extraYahtzee">
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
             </td>
             <td className="extraYahtzee">
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
             </td>
             <td className="extraYahtzee">
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
             </td>
             <td className="extraYahtzee">
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
-              <div className="extraYahtzeeBox">X</div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
+              <div
+                onClick={() => props.setExtraY(!props.extraY)}
+                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+              >
+                X
+              </div>
             </td>
           </tr>
           <tr>
             <th>TOTAL</th>
             <th> ==></th>
-            <td className="total">{/* Will Compute total */}</td>
-            <td className="total">{/* Will Compute total */}</td>
-            <td className="total">{/* Will Compute total */}</td>
-            <td className="total">{/* Will Compute total */}</td>
-            <td className="total">{/* Will Compute total */}</td>
-            <td className="total">{/* Will Compute total */}</td>
+            <td className="upperTotal">{/* Will Compute upperTotal */}</td>
+            <td className="upperTotal">{/* Will Compute upperTotal */}</td>
+            <td className="upperTotal">{/* Will Compute upperTotal */}</td>
+            <td className="upperTotal">{/* Will Compute upperTotal */}</td>
+            <td className="upperTotal">{/* Will Compute upperTotal */}</td>
+            <td className="upperTotal">{/* Will Compute upperTotal */}</td>
           </tr>
         </table>
       </div>
