@@ -684,123 +684,69 @@ function Table(props) {
             <th>YAHTZEE BONUS</th>
             <td>100 per extra Yahtzee</td>
             <td className="extraYahtzee">
-              <div
-                onClick={props.test}
-                className={props.testY.gameOneOne}
-              >
-                X
+            <div>
+               {props.extraYahtzee.gameOne.one.display}
               </div>
-              <div
-                onClick={props.test}
-                className={props.testY.gameOneTwo}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameOne.two.display}
               </div>
-              <div
-                onClick={props.test}
-                className={props.testY.gameOneThree}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameOne.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+            <div>
+            {props.extraYahtzee.gameTwo.one.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameTwo.two.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameTwo.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+            <div>
+            {props.extraYahtzee.gameThree.one.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameThree.two.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameThree.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+            <div>
+            {props.extraYahtzee.gameFour.one.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameFour.two.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameFour.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+            <div>
+                {props.extraYahtzee.gameFive.one.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+                {props.extraYahtzee.gameFive.two.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+                {props.extraYahtzee.gameFive.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+            <div>
+            {props.extraYahtzee.gameFive.one.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameFive.two.display}
               </div>
-              <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
-              >
-                X
+              <div>
+              {props.extraYahtzee.gameFive.three.display}
               </div>
             </td>
           </tr>

@@ -11,9 +11,7 @@ export default function GameLogic() {
     gameOneThree: true
   })
 
-  const [score, setScore] = useState({});
-  
-  
+  const [score, setScore] = useState({});  
   const [upperTotal, setUpperTotal] = useState({
     gameOne: 0,
     gameTwo: 0,
@@ -30,6 +28,38 @@ export default function GameLogic() {
     gameFive: 0,
     gameSix: 0
   });
+  const [extraYahtzee,setExtraYahtzee] = useState({
+    gameOne: {
+      one: {display: "X", Clicked: false},
+      two: {display: "X", Clicked: false},
+      three: {display: "X", Clicked: false}
+    },
+    gameTwo: {
+      one: {display: "X", Clicked: false},
+      two: {display: "X", Clicked: false},
+      three: {display: "X", Clicked: false}
+    },
+    gameThree: {
+      one: {display: "X", Clicked: false},
+      two: {display: "X", Clicked: false},
+      three: {display: "X", Clicked: false}
+    },
+    gameFour: {
+      one: {display: "X", Clicked: false},
+      two: {display: "X", Clicked: false},
+      three: {display: "X", Clicked: false}
+    },
+    gameFive: {
+      one: {display: "X", Clicked: false},
+      two: {display: "X", Clicked: false},
+      three: {display: "X", Clicked: false}
+    },
+    gameSix: {
+      one: {display: "X", Clicked: false},
+      two: {display: "X", Clicked: false},
+      three: {display: "X", Clicked: false}
+    }
+  })
 
   function getUpperTotal() {
     let gameOne = (
@@ -185,16 +215,15 @@ export default function GameLogic() {
         computeScore={computeScore}
         upperTotal={upperTotal}
         gameBonus={gameBonus}
-
-        extraY={extraY}
-        setExtraY={setExtraY}
-
+        
         getGameBonus={getGameBonus}
         upperTotal={upperTotal}
         test={test}
 
-        testY={testY}
-        setTestY={setTestY}
+        extraYahtzee={extraYahtzee}
+        setExtraYahtzee={setExtraYahtzee}
+
+
       />
       <button onClick={getUpperTotal}>TEST</button>
       <button onClick={getGameBonus}>TEST BONUS</button>
