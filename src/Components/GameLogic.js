@@ -2,12 +2,17 @@ import React, {useState, useEffect} from "react";
 import Table from "./Table";
 
 import "../styles.css";
+import { identifier } from "@babel/types";
 
 export default function GameLogic() {
 
+  const [testY,setTestY] = useState({gameOneOne: true,
+    gameOneTwo: true,
+    gameOneThree: true
+  })
+
   const [score, setScore] = useState({});
   
-  const [extraY, setExtraY] = useState({extaOne: false, extraTwo: false, extraThree: false});
   
   const [upperTotal, setUpperTotal] = useState({
     gameOne: 0,
@@ -168,6 +173,11 @@ export default function GameLogic() {
         setGameBonus({...gameBonus,gameSix})
       }
   }
+
+  function test(e){
+    console.log("working")
+    console.log(e.target)
+  }
   return (
     <div>
       <h1>header</h1>
@@ -175,10 +185,16 @@ export default function GameLogic() {
         computeScore={computeScore}
         upperTotal={upperTotal}
         gameBonus={gameBonus}
+
         extraY={extraY}
         setExtraY={setExtraY}
+
         getGameBonus={getGameBonus}
         upperTotal={upperTotal}
+        test={test}
+
+        testY={testY}
+        setTestY={setTestY}
       />
       <button onClick={getUpperTotal}>TEST</button>
       <button onClick={getGameBonus}>TEST BONUS</button>

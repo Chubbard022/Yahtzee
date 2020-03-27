@@ -685,20 +685,20 @@ function Table(props) {
             <td>100 per extra Yahtzee</td>
             <td className="extraYahtzee">
               <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+                onClick={props.test}
+                className={props.testY.gameOneOne}
               >
                 X
               </div>
               <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+                onClick={props.test}
+                className={props.testY.gameOneTwo}
               >
                 X
               </div>
               <div
-                onClick={() => props.setExtraY(!props.extraY)}
-                className={props.extraY ? "hideBox" : "extraYahtzeeBox"}
+                onClick={props.test}
+                className={props.testY.gameOneThree}
               >
                 X
               </div>
