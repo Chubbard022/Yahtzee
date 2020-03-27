@@ -685,68 +685,68 @@ function Table(props) {
             <td>100 per extra Yahtzee</td>
             <td className="extraYahtzee">
             <div>
-                X
+               {props.extraYahtzee.gameOne.one.display}
               </div>
               <div>
-                X
+              {props.extraYahtzee.gameOne.two.display}
               </div>
               <div>
-                X
+              {props.extraYahtzee.gameOne.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
             <div>
-                X
+            {props.extraYahtzee.gameTwo.one.display}
               </div>
               <div>
-                X
+              {props.extraYahtzee.gameTwo.two.display}
               </div>
               <div>
-                X
+              {props.extraYahtzee.gameTwo.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
             <div>
-                X
+            {props.extraYahtzee.gameThree.one.display}
               </div>
               <div>
-                X
+              {props.extraYahtzee.gameThree.two.display}
               </div>
-              <div>>
-                X
+              <div>
+              {props.extraYahtzee.gameThree.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
             <div>
-                X
+            {props.extraYahtzee.gameFour.one.display}
               </div>
               <div>
-                X
+              {props.extraYahtzee.gameFour.two.display}
               </div>
               <div>
-                X
+              {props.extraYahtzee.gameFour.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
             <div>
-                X
+                {props.extraYahtzee.gameFive.one.display}
               </div>
               <div>
-                X
+                {props.extraYahtzee.gameFive.two.display}
               </div>
               <div>
-                X
+                {props.extraYahtzee.gameFive.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
             <div>
-                X
+            {props.extraYahtzee.gameFive.one.display}
               </div>
               <div>
-                X
+              {props.extraYahtzee.gameFive.two.display}
               </div>
-              <div>>
-                X
+              <div>
+              {props.extraYahtzee.gameFive.three.display}
               </div>
             </td>
           </tr>
