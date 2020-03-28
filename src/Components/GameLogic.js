@@ -30,34 +30,34 @@ export default function GameLogic() {
   });
   const [extraYahtzee,setExtraYahtzee] = useState({
     gameOne: {
-      one: {display: "X", Clicked: false},
-      two: {display: "X", Clicked: false},
-      three: {display: "X", Clicked: false}
+      one: {display: "", Clicked: false},
+      two: {display: "", Clicked: false},
+      three: {display: "", Clicked: false}
     },
     gameTwo: {
-      one: {display: "X", Clicked: false},
-      two: {display: "X", Clicked: false},
-      three: {display: "X", Clicked: false}
+      one: {display: "", Clicked: false},
+      two: {display: "", Clicked: false},
+      three: {display: "", Clicked: false}
     },
     gameThree: {
-      one: {display: "X", Clicked: false},
-      two: {display: "X", Clicked: false},
-      three: {display: "X", Clicked: false}
+      one: {display: "", Clicked: false},
+      two: {display: "", Clicked: false},
+      three: {display: "", Clicked: false}
     },
     gameFour: {
-      one: {display: "X", Clicked: false},
-      two: {display: "X", Clicked: false},
-      three: {display: "X", Clicked: false}
+      one: {display: "", Clicked: false},
+      two: {display: "", Clicked: false},
+      three: {display: "", Clicked: false}
     },
     gameFive: {
-      one: {display: "X", Clicked: false},
-      two: {display: "X", Clicked: false},
-      three: {display: "X", Clicked: false}
+      one: {display: "", Clicked: false},
+      two: {display: "", Clicked: false},
+      three: {display: "", Clicked: false}
     },
     gameSix: {
-      one: {display: "X", Clicked: false},
-      two: {display: "X", Clicked: false},
-      three: {display: "X", Clicked: false}
+      one: {display: "", Clicked: false},
+      two: {display: "", Clicked: false},
+      three: {display: "", Clicked: false}
     }
   })
 
@@ -208,9 +208,15 @@ export default function GameLogic() {
     console.log("working")
     let gameNumber = e.target.id.split("-")[0]
     let boxNumber = e.target.id.split("-")[1]
-    console.log(e.target.id)
-    console.log(gameNumber)
-    console.log(boxNumber)
+    
+    if(extraYahtzee[gameNumber][boxNumber].display == "X"){
+      let removeX = extraYahtzee[gameNumber][boxNumber].display = ""
+      setExtraYahtzee({...extraYahtzee,removeX})
+    }else{
+    let addX = extraYahtzee[gameNumber][boxNumber].display = "X"
+    setExtraYahtzee({...extraYahtzee,addX})
+    }
+
   }
   return (
     <div>
