@@ -206,7 +206,11 @@ export default function GameLogic() {
 
   function test(e){
     console.log("working")
-    console.log(e.target)
+    let gameNumber = e.target.id.split("-")[0]
+    let boxNumber = e.target.id.split("-")[1]
+    console.log(e.target.id)
+    console.log(gameNumber)
+    console.log(boxNumber)
   }
   return (
     <div>

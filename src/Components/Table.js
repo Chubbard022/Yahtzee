@@ -684,69 +684,69 @@ function Table(props) {
             <th>YAHTZEE BONUS</th>
             <td>100 per extra Yahtzee</td>
             <td className="extraYahtzee">
-            <div>
+            <div id="gameOne-one" onClick={props.test}>
                {props.extraYahtzee.gameOne.one.display}
               </div>
-              <div>
+              <div id="gameOne-two" onClick={props.test} >
               {props.extraYahtzee.gameOne.two.display}
               </div>
-              <div>
+              <div id="gameOne-three" onClick={props.test} >
               {props.extraYahtzee.gameOne.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-            <div>
+            <div id="gameTwo-one" onClick={props.test} >
             {props.extraYahtzee.gameTwo.one.display}
               </div>
-              <div>
+              <div id="gameTwo-two" onClick={props.test} >
               {props.extraYahtzee.gameTwo.two.display}
               </div>
-              <div>
+              <div id="gameTwo-three" onClick={props.test} >
               {props.extraYahtzee.gameTwo.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-            <div>
+            <div id="gameThree-one" onClick={props.test} >
             {props.extraYahtzee.gameThree.one.display}
               </div>
-              <div>
+              <div id="gameThree-two" onClick={props.test} >
               {props.extraYahtzee.gameThree.two.display}
               </div>
-              <div>
+              <div id="gameThree-three" onClick={props.test} >
               {props.extraYahtzee.gameThree.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-            <div>
+            <div id="gameFour-one" onClick={props.test} >
             {props.extraYahtzee.gameFour.one.display}
               </div>
-              <div>
+              <div id="gameFour-two" onClick={props.test} >
               {props.extraYahtzee.gameFour.two.display}
               </div>
-              <div>
+              <div id="gameFour-three" onClick={props.test} >
               {props.extraYahtzee.gameFour.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-            <div>
+            <div id="gameFive-one" onClick={props.test} >
                 {props.extraYahtzee.gameFive.one.display}
               </div>
-              <div>
+              <div id="gameFive-two" onClick={props.test} >
                 {props.extraYahtzee.gameFive.two.display}
               </div>
-              <div>
+              <div id="gameFive-three" onClick={props.test} >
                 {props.extraYahtzee.gameFive.three.display}
               </div>
             </td>
             <td className="extraYahtzee">
-            <div>
-            {props.extraYahtzee.gameFive.one.display}
+            <div id="gameSix-one" onClick={props.test} >
+            {props.extraYahtzee.gameSix.one.display}
               </div>
-              <div>
-              {props.extraYahtzee.gameFive.two.display}
+              <div id="gameSix-two" onClick={props.test}>
+              {props.extraYahtzee.gameSix.two.display}
               </div>
-              <div>
-              {props.extraYahtzee.gameFive.three.display}
+              <div id="gameSix-three" onClick={props.test}>
+              {props.extraYahtzee.gameSix.three.display}
               </div>
             </td>
           </tr>
