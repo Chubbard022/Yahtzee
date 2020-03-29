@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import Table from "./Table";
+import Dice from "./Dice.js"
 
 import "../styles.css";
-import { identifier } from "@babel/types";
 
 export default function GameLogic() {
 
@@ -119,22 +119,22 @@ export default function GameLogic() {
       //check to see if the score is greater than 63, else do nothing
       if(gameOne > 63){
 
-        setGameBonus({...gameBonus, gameOne:63})
+        setGameBonus({...gameBonus, gameOne:35})
       }
       if(gameTwo > 63){
-        setGameBonus({...gameBonus, gameTwo:63})
+        setGameBonus({...gameBonus, gameTwo:35})
       }
       if(gameThree > 63){
-        setGameBonus({...gameBonus, gameThree:63})
+        setGameBonus({...gameBonus, gameThree:35})
       }
       if(gameFour > 63){
-        setGameBonus({...gameBonus, gameFour:63})
+        setGameBonus({...gameBonus, gameFour:35})
       }
       if(gameFive > 63){
-        setGameBonus({...gameBonus, gameFive:63})
+        setGameBonus({...gameBonus, gameFive:35})
       }
       if(gameSix > 63){
-        setGameBonus({...gameBonus, gameSix:63})
+        setGameBonus({...gameBonus, gameSix:35})
       }
   }
   function getUpperTotal() {
@@ -241,8 +241,10 @@ export default function GameLogic() {
 
 
       />
-      <button onClick={getUpperTotal}>TEST</button>
-      <button onClick={getGameBonus}>TEST BONUS</button>
+      <button onClick={getUpperTotal}>ADD UP UPPER SECTION</button>
+      <button onClick={getGameBonus}>ADD UP UPPER BONUS</button>
+      <br />
+      <Dice />
     </div>
   );
 }
