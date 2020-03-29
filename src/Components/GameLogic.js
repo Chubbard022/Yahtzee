@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import Table from "./Table";
+import Dice from "./Dice.js"
 
 import "../styles.css";
-import { identifier } from "@babel/types";
 
 export default function GameLogic() {
 
@@ -61,74 +61,7 @@ export default function GameLogic() {
     }
   })
 
-  function getUpperTotal() {
-    let gameOne = (
-      parseInt(score["gameOne ones"], 10) +
-      parseInt(score["gameOne twos"], 10) +
-      parseInt(score["gameOne threes"], 10) +
-      parseInt(score["gameOne fours"], 10) +
-      parseInt(score["gameOne fives"], 10) +
-      parseInt(score["gameOne sixes"], 10))
-  
-      let gameTwo =(
-      parseInt(score["gameTwo ones"], 10) +
-      parseInt(score["gameTwo twos"], 10) +
-      parseInt(score["gameTwo threes"], 10) +
-      parseInt(score["gameTwo fours"], 10) +
-      parseInt(score["gameTwo fives"], 10) +
-      parseInt(score["gameTwo sixes"], 10))
-  
-      let gameThree =(
-      parseInt(score["gameThree ones"], 10) +
-      parseInt(score["gameThree twos"], 10) +
-      parseInt(score["gameThree threes"], 10) +
-      parseInt(score["gameThree fours"], 10) +
-      parseInt(score["gameThree fives"], 10) +
-      parseInt(score["gameThree sixes"], 10))
-  
-      let gameFour =(
-      parseInt(score["gameFour ones"], 10) +
-      parseInt(score["gameFour twos"], 10) +
-      parseInt(score["gameFour threes"], 10) +
-      parseInt(score["gameFour fours"], 10) +
-      parseInt(score["gameFour fives"], 10) +
-      parseInt(score["gameFour sixes"], 10))
-  
-      let gameFive =(
-      parseInt(score["gameFive ones"], 10) +
-      parseInt(score["gameFive twos"], 10) +
-      parseInt(score["gameFive threes"], 10) +
-      parseInt(score["gameFive fours"], 10) +
-      parseInt(score["gameFive fives"], 10) +
-      parseInt(score["gameFive sixes"], 10))
-  
-      let gameSix =(
-      parseInt(score["gameSix ones"], 10) +
-      parseInt(score["gameSix twos"], 10) +
-      parseInt(score["gameSix threes"], 10) +
-      parseInt(score["gameSix fours"], 10) +
-      parseInt(score["gameSix fives"], 10) +
-      parseInt(score["gameSix sixes"], 10))
 
-      if(gameOne > 0){
-        setUpperTotal({...gameBonus, gameOne})
-      }
-      if(gameTwo  > 0){
-        setUpperTotal({...gameBonus,gameTwo})
-      }
-      if(gameThree  > 0){
-        setUpperTotal({...gameBonus,gameThree})
-      }
-      if(gameFour  > 0){
-        setUpperTotal({...gameBonus,gameFour})
-      }
-      if(gameFive  > 0){
-        setUpperTotal({...gameBonus,gameFive})
-      }
-      if(gameSix  > 0){
-        setUpperTotal({...gameBonus,gameSix})
-      }
-    }
   function computeScore(e) {
     let name = e.target.name;
     score[name] = e.target.value;
@@ -185,27 +118,100 @@ export default function GameLogic() {
 
       //check to see if the score is greater than 63, else do nothing
       if(gameOne > 63){
-        setGameBonus({...gameBonus, gameOne})
+
+        setGameBonus({...gameBonus, gameOne:35})
       }
       if(gameTwo > 63){
-        setGameBonus({...gameBonus,gameTwo})
+        setGameBonus({...gameBonus, gameTwo:35})
       }
       if(gameThree > 63){
-        setGameBonus({...gameBonus,gameThree})
+        setGameBonus({...gameBonus, gameThree:35})
       }
       if(gameFour > 63){
-        setGameBonus({...gameBonus,gameFour})
+        setGameBonus({...gameBonus, gameFour:35})
       }
       if(gameFive > 63){
-        setGameBonus({...gameBonus,gameFive})
+        setGameBonus({...gameBonus, gameFive:35})
       }
       if(gameSix > 63){
-        setGameBonus({...gameBonus,gameSix})
+        setGameBonus({...gameBonus, gameSix:35})
       }
   }
+  function getUpperTotal() {
+    let gameOne = (
+      parseInt(score["gameOne ones"], 10) +
+      parseInt(score["gameOne twos"], 10) +
+      parseInt(score["gameOne threes"], 10) +
+      parseInt(score["gameOne fours"], 10) +
+      parseInt(score["gameOne fives"], 10) +
+      parseInt(score["gameOne sixes"], 10))
+  
+      let gameTwo =(
+      parseInt(score["gameTwo ones"], 10) +
+      parseInt(score["gameTwo twos"], 10) +
+      parseInt(score["gameTwo threes"], 10) +
+      parseInt(score["gameTwo fours"], 10) +
+      parseInt(score["gameTwo fives"], 10) +
+      parseInt(score["gameTwo sixes"], 10))
+  
+      let gameThree =(
+      parseInt(score["gameThree ones"], 10) +
+      parseInt(score["gameThree twos"], 10) +
+      parseInt(score["gameThree threes"], 10) +
+      parseInt(score["gameThree fours"], 10) +
+      parseInt(score["gameThree fives"], 10) +
+      parseInt(score["gameThree sixes"], 10))
+  
+      let gameFour =(
+      parseInt(score["gameFour ones"], 10) +
+      parseInt(score["gameFour twos"], 10) +
+      parseInt(score["gameFour threes"], 10) +
+      parseInt(score["gameFour fours"], 10) +
+      parseInt(score["gameFour fives"], 10) +
+      parseInt(score["gameFour sixes"], 10))
+  
+      let gameFive =(
+      parseInt(score["gameFive ones"], 10) +
+      parseInt(score["gameFive twos"], 10) +
+      parseInt(score["gameFive threes"], 10) +
+      parseInt(score["gameFive fours"], 10) +
+      parseInt(score["gameFive fives"], 10) +
+      parseInt(score["gameFive sixes"], 10))
+  
+      let gameSix =(
+      parseInt(score["gameSix ones"], 10) +
+      parseInt(score["gameSix twos"], 10) +
+      parseInt(score["gameSix threes"], 10) +
+      parseInt(score["gameSix fours"], 10) +
+      parseInt(score["gameSix fives"], 10) +
+      parseInt(score["gameSix sixes"], 10))
 
+      if(gameOne > 0){
+        gameOne = gameOne + gameBonus.gameOne
+        setUpperTotal({...upperTotal, gameOne})
+      }
+      if(gameTwo  > 0){
+        gameTwo = gameTwo + gameBonus.gameTwo
+        setUpperTotal({...upperTotal, gameTwo})
+      }
+      if(gameThree  > 0){
+        gameThree = gameThree + gameBonus.gameThree
+        setUpperTotal({...upperTotal, gameThree})
+      }
+      if(gameFour  > 0){
+        gameFour = gameFour + gameBonus.gameFour
+        setUpperTotal({...upperTotal, gameFour})
+      }
+      if(gameFive  > 0){
+        gameFive = gameFive + gameBonus.gameFive
+        setUpperTotal({...upperTotal, gameFive})
+      }
+      if(gameSix  > 0){
+        gameSix = gameSix + gameBonus.gameSix
+        setUpperTotal({...upperTotal, gameSix})
+      }
+    }
   function test(e){
-    console.log("working")
     let gameNumber = e.target.id.split("-")[0]
     let boxNumber = e.target.id.split("-")[1]
     
@@ -235,8 +241,10 @@ export default function GameLogic() {
 
 
       />
-      <button onClick={getUpperTotal}>TEST</button>
-      <button onClick={getGameBonus}>TEST BONUS</button>
+      <button onClick={getUpperTotal}>ADD UP UPPER SECTION</button>
+      <button onClick={getGameBonus}>ADD UP UPPER BONUS</button>
+      <br />
+      <Dice />
     </div>
   );
 }
