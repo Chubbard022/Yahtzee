@@ -4,33 +4,35 @@ import Dice from "./Dice"
 
 
 const DiceLogic = () =>{
-    const [dice] = useState([1,2,3,4,5,6])
-    const [rolledDice,setRolledDice] = useState({"diceOne":0,"diceTwo":0,"diceThree":0,"diceFour":0,"diceFive":0,"diceSix":0})
+    const [rolledDice,setRolledDice] = useState({
+                                                 diceOne:0,
+                                                 diceTwo:0,
+                                                 diceThree:0,
+                                                 diceFour:0,
+                                                 diceFive:0,
+                                                 diceSix:0,
+
+                                                })
 
     function rollDice() {
-
-        let obj = {}
-
-        for (let [key, value] of Object.entries(rolledDice)) {
-            let number = Math.floor(Math.random() * Math.floor(6))
-            console.log("key",typeof key)
-            console.log("value",number)
-            setRolledDice({...rollDice, key: number})
-            console.log(rolledDice)
-        }
-      }
-    function setDice(){
-        console.log(rolledDice)
-        rollDice()
-        
-    } 
-    
+        let tempHolder = {}
+        for (let [key, number] of Object.entries(rolledDice)) {
+            number = Math.floor(Math.random() * Math.floor(6))
+            tempHolder[key] = number
+             setRolledDice(tempHolder)
+            }
+    }
+    console.log(rolledDice)
     return(
         <div>
-        <button onClick={setDice}>ROLL DICE</button>
-        <Dice rolledDice={rollDice}/>
+        <button onClick={rollDice}>ROLL DICE</button>
+        <Dice rolledDice={rolledDice}/>
         </div>
     )
 }
 
 export default DiceLogic
+
+
+// eventually click on the dice that need to be updated, put those into an array or object
+    // pass that object into the function that will reroll those dice
