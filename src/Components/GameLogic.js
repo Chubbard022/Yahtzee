@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Table from "./Table";
-import Dice from "./Dice.js"
+import DiceLogic from "./DiceLogic.js"
 
 import "../styles.css";
 
@@ -244,7 +244,7 @@ export default function GameLogic() {
       <button onClick={getUpperTotal}>ADD UP UPPER SECTION</button>
       <button onClick={getGameBonus}>ADD UP UPPER BONUS</button>
       <br />
-      <Dice />
+      <DiceLogic />
     </div>
   );
 }
