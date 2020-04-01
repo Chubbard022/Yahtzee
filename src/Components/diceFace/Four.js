@@ -3,17 +3,18 @@ import React, {useState, useEffect} from "react";
 import "../../styles.css"
 
 
-const Four = () =>{
+const Four = (props) =>{
+    console.log(props.keepDice.four)
     return(
-        <div id="four">
-            <div id="four" className="fourth-face">
-                <div id="four" className="column">
-                    <span id="four" className="pip"></span>
-                    <span id="four" className="pip"></span>
+        <div id='props.keepDice.four'>
+            <div id={props.keepDice.four} className="fourth-face">
+                <div id={props.keepDice.four} className="column">
+                    <span id={props.keepDice.four} className="pip"></span>
+                    <span id={props.keepDice.four} className="pip"></span>
                 </div>
-                <div id="four" className="column">
-                    <span id="four" className="pip"></span>
-                    <span id="four" className="pip"></span>
+                <div id={props.keepDice.four} className="column">
+                    <span id={props.keepDice.four} className="pip"></span>
+                    <span id={props.keepDice.four} className="pip"></span>
                 </div>
             </div>
         </div>
