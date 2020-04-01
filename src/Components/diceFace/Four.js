@@ -5,15 +5,15 @@ import "../../styles.css"
 
 const Four = () =>{
     return(
-        <div>
-            <div class="fourth-face">
-                <div class="column">
-                    <span class="pip"></span>
-                    <span class="pip"></span>
+        <div id="four">
+            <div id="four" className="fourth-face">
+                <div id="four" className="column">
+                    <span id="four" className="pip"></span>
+                    <span id="four" className="pip"></span>
                 </div>
-                <div class="column">
-                    <span class="pip"></span>
-                    <span class="pip"></span>
+                <div id="four" className="column">
+                    <span id="four" className="pip"></span>
+                    <span id="four" className="pip"></span>
                 </div>
             </div>
         </div>

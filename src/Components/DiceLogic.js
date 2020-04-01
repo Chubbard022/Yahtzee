@@ -25,7 +25,7 @@ const DiceLogic = () =>{
     console.log(rolledDice)
     return(
         <div>
-        <button onClick={rollDice}>ROLL DICE</button>
+        <button className="button" onClick={rollDice}>ROLL DICE</button>
         <Dice rolledDice={rolledDice}/>
         </div>
     )

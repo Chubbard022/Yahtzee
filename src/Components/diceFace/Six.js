@@ -5,18 +5,18 @@ import "../../styles.css"
 
 const Six = () =>{
     return(
-        <div>
-            <div class="sixth-face">
-                <div class="column">
-                    <span class="pip"></span>
-                    <span class="pip"></span>
-                    <span class="pip"></span>
+        <div id="six">
+            <div id="six" className="sixth-face">
+                <div id="six" className="column">
+                    <span id="six" className="pip"></span>
+                    <span id="six" className="pip"></span>
+                    <span id="six" className="pip"></span>
                 </div>
 
-                <div class="column">
-                    <span class="pip"></span>
-                    <span class="pip"></span>
-                    <span class="pip"></span>
+                <div id="six" className="column">
+                    <span id="six" className="pip"></span>
+                    <span id="six" className="pip"></span>
+                    <span id="six" className="pip"></span>
                 </div>
             </div>
         </div>

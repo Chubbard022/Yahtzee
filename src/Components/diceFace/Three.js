@@ -5,11 +5,11 @@ import "../../styles.css"
 
 const Three = () =>{
     return(
-        <div>
-            <div class="third-face">
-                <span class="pip"></span>
-                <span class="pip"></span>
-                <span class="pip"></span>
+        <div id="three">
+            <div id="three" className="third-face">
+                <span id="three" className="pip"></span>
+                <span id="three" className="pip"></span>
+                <span id="three" className="pip"></span>
             </div>
         </div>
     )
