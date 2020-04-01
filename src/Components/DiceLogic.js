@@ -17,7 +17,7 @@ const DiceLogic = () =>{
     function rollDice() {
         let tempHolder = {}
         for (let [key, number] of Object.entries(rolledDice)) {
-            number = Math.floor(Math.random() * Math.floor(6))
+            number = (Math.floor(Math.random() * 6) + 1)
             tempHolder[key] = number
              setRolledDice(tempHolder)
             }
