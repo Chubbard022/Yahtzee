@@ -37,7 +37,11 @@ td {
   color:purple
 }
 
-
+.diceBox{
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+}
 /* DICE */
 .first-face {
   display: flex;

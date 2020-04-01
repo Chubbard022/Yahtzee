@@ -38,23 +38,13 @@ function Dice(props){
       }
     }
     return(
-        <div>
-            {props.rolledDice.diceOne}
-            {props.rolledDice.diceTwo}
-            {props.rolledDice.diceThree}
-            {props.rolledDice.diceFour}
-            {props.rolledDice.diceFive}
-            {props.rolledDice.diceSix}
-
-          
+        <div className="diceBox">          
           {dicePicker(props.rolledDice.diceOne)}
           {dicePicker(props.rolledDice.diceTwo)}
           {dicePicker(props.rolledDice.diceThree)}
           {dicePicker(props.rolledDice.diceFour)}
           {dicePicker(props.rolledDice.diceFive)}
           {dicePicker(props.rolledDice.diceSix)}
-
-          <button onClick={dicePicker}>CLICKING</button>
         </div>
     )
 }
