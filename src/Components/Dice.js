@@ -10,119 +10,51 @@ import Six from "../Components/diceFace/Six"
 
 import "../styles.css"
 
+
 function Dice(props){
-  const [classList,setClassList] = useState([''])
+    let [keepDice,setKeepDice] = useState([{one:false},{two:false},{three:false},{four:false},{five:false},{six:false}])
 
     function dicePicker(die){
       switch(die){
         case 1:
-          return <One/>
+          return <One keepDice={keepDice[0]}/>
           break;
         case 2:
-          return <Two />
+          return <Two keepDice={keepDice[1]}/>
           break;
         case 3:
-          return <Three />
+          return <Three keepDice={keepDice[2]}/>
           break;
         case 4:
-          return <Four />
+          return <Four keepDice={keepDice[3]}/>
           break;
         case 5:
-          return <Five />
+          return <Five keepDice={keepDice[4]}/>
           break;
         case 6:
-          return <Six />
+          return <Six keepDice={keepDice[5]}/>
           break;
         default:
           return 
       }
     }
+    function test(e){
+        let diceId = e.target.id
+        console.log(diceId)
+ 
+        
+    }
+
     return(
         <div className="diceBox">          
-          {dicePicker(props.rolledDice.diceOne)}
-          {dicePicker(props.rolledDice.diceTwo)}
-          {dicePicker(props.rolledDice.diceThree)}
-          {dicePicker(props.rolledDice.diceFour)}
-          {dicePicker(props.rolledDice.diceFive)}
-          {dicePicker(props.rolledDice.diceSix)}
+          <div onClick={test}>{dicePicker(props.rolledDice.diceOne)}</div>
+          <div onClick={test}>{dicePicker(props.rolledDice.diceTwo)}</div>
+          <div onClick={test}>{dicePicker(props.rolledDice.diceThree)}</div>
+          <div onClick={test}>{dicePicker(props.rolledDice.diceFour)}</div>
+          <div onClick={test}>{dicePicker(props.rolledDice.diceFive)}</div>
+          <div onClick={test}>{dicePicker(props.rolledDice.diceSix)}</div>
         </div>
     )
 }
 export default Dice
 
-
-
-
-
-
-// let dice = props.rolledDice
-      
-// for(let entries in props.rolledDice){
-//   console.log("WORKING",entries)
-// }
-// let ones = <div class="second-face">
-// <span class="first"></span>
-// </div>
-// let twos = <div class="second-face">
-// <span class="pip"></span>
-// <span class="pip"></span>
-// </div>
-// setClassList([ones])
-
-// console.log("ONES",ones)
-// console.log("TWOS",twos)
-
-
-{/* <div onClick={classPicker} class="second-face">
-  <span class="first"></span>
-</div>
-
-<div class="second-face">
-  <span class="pip"></span>
-  <span class="pip"></span>
-</div>
-
-<div class="third-face">
-  <span class="pip"></span>
-  <span class="pip"></span>
-  <span class="pip"></span>
-</div>
-
-<div class="fourth-face">
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-
-</div>
-<div class="fifth-face">
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-  <div class="column">
-    <span class="pip"></span>
-  </div>
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-</div>
-
-<div class="sixth-face">
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-</div> */}

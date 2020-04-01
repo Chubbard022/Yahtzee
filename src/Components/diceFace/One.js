@@ -3,11 +3,11 @@ import React, {useState, useEffect} from "react";
 import "../../styles.css"
 
 
-const One = () =>{
+const One = (props) =>{
     return(
-        <div>
-            <div class="second-face">
-                <span class="first"></span>
+        <div id="one">
+            <div id="one" className="second-face">
+                <span id="one" className="first"></span>
             </div>
         </div>
     )

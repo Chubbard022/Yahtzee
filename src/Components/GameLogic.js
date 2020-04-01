@@ -241,8 +241,8 @@ export default function GameLogic() {
 
 
       />
-      <button onClick={getUpperTotal}>ADD UP UPPER SECTION</button>
-      <button onClick={getGameBonus}>ADD UP UPPER BONUS</button>
+      <button className="button" onClick={getUpperTotal}>ADD UP UPPER SECTION</button>
+      <button className="button" onClick={getGameBonus}>ADD UP UPPER BONUS</button>
       <br />
       <DiceLogic />
     </div>
