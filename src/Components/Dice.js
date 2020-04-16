@@ -11,8 +11,7 @@ import Six from "../Components/diceFace/Six"
 import "../styles.css"
 
 function Dice(props){
-  const [classList,setClassList] = useState([''])
-
+    const [clicked,setClicked] = useState([false,false,false,false,false,false])
     function dicePicker(die){
       switch(die){
         case 1:
@@ -37,92 +36,24 @@ function Dice(props){
           return 
       }
     }
+    const test = (...stuff) =>{
+      console.log(stuff)
+    }
     return(
         <div className="diceBox">          
-          {dicePicker(props.rolledDice.diceOne)}
-          {dicePicker(props.rolledDice.diceTwo)}
-          {dicePicker(props.rolledDice.diceThree)}
-          {dicePicker(props.rolledDice.diceFour)}
-          {dicePicker(props.rolledDice.diceFive)}
-          {dicePicker(props.rolledDice.diceSix)}
+         <div  onClick={(e)=>test("diceOne", props.rolledDice.diceOne)}>{dicePicker(props.rolledDice.diceOne)}</div>
+
+          <div onClick={(e)=>test("diceTwo", props.rolledDice.diceTwo)}>{dicePicker(props.rolledDice.diceTwo)}</div>
+
+          <div onClick={(e)=>test("diceThree", props.rolledDice.diceThree)}>{dicePicker(props.rolledDice.diceThree)}</div>
+
+          <div onClick={(e)=>test("diceFour", props.rolledDice.diceFour)}>{dicePicker(props.rolledDice.diceFour)}</div>
+
+          <div onClick={(e)=>test("diceFive", props.rolledDice.diceFive)}>{dicePicker(props.rolledDice.diceFive)}</div>
+
+          <div onClick={(e)=>test("diceSix", props.rolledDice.diceSix)}>{dicePicker(props.rolledDice.diceSix)}</div>
         </div>
     )
 }
 export default Dice
 
-
-
-
-
-
-// let dice = props.rolledDice
-      
-// for(let entries in props.rolledDice){
-//   console.log("WORKING",entries)
-// }
-// let ones = <div class="second-face">
-// <span class="first"></span>
-// </div>
-// let twos = <div class="second-face">
-// <span class="pip"></span>
-// <span class="pip"></span>
-// </div>
-// setClassList([ones])
-
-// console.log("ONES",ones)
-// console.log("TWOS",twos)
-
-
-{/* <div onClick={classPicker} class="second-face">
-  <span class="first"></span>
-</div>
-
-<div class="second-face">
-  <span class="pip"></span>
-  <span class="pip"></span>
-</div>
-
-<div class="third-face">
-  <span class="pip"></span>
-  <span class="pip"></span>
-  <span class="pip"></span>
-</div>
-
-<div class="fourth-face">
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-
-</div>
-<div class="fifth-face">
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-  <div class="column">
-    <span class="pip"></span>
-  </div>
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-</div>
-
-<div class="sixth-face">
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-
-  <div class="column">
-    <span class="pip"></span>
-    <span class="pip"></span>
-    <span class="pip"></span>
-  </div>
-</div> */}
