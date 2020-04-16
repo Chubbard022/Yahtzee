@@ -5,18 +5,18 @@ import "../../styles.css"
 
 const Five = (props) =>{
     return(
-        <div id="five">
-            <div id="five" className="fifth-face">
-                <div id="five" className="column">
-                    <span id="five" className="pip"></span>
-                    <span id="five" className="pip"></span>
+        <div>
+            <div className="fifth-face">
+                <div className="column">
+                    <span className="pip"></span>
+                    <span className="pip"></span>
                 </div>
-                <div id="five" className="column">
-                    <span id="five" className="pip"></span>
+                <div className="column">
+                    <span className="pip"></span>
                 </div>
-                <div id="five"className="column">
-                    <span id="five" className="pip"></span>
-                    <span id="five" className="pip"></span>
+                <div className="column">
+                    <span className="pip"></span>
+                    <span className="pip"></span>
                 </div>
             </div>
         </div>

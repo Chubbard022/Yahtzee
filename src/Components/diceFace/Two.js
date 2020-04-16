@@ -5,10 +5,10 @@ import "../../styles.css"
 
 const Two = (props) =>{
     return(
-        <div id="two">
-            <div id="two" className="second-face">
-                <span id="two" className="pip"></span>
-                <span id="two" className="pip"></span>
+        <div>
+            <div className="second-face">
+                <span className="pip"></span>
+                <span className="pip"></span>
                 </div>
         </div>
     )

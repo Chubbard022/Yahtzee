@@ -5,28 +5,53 @@ import Dice from "./Dice"
 
 const DiceLogic = () =>{
     const [rolledDice,setRolledDice] = useState({
-                                                 diceOne:0,
-                                                 diceTwo:0,
-                                                 diceThree:0,
-                                                 diceFour:0,
-                                                 diceFive:0,
-                                                 diceSix:0,
+                                                diceOne:0,
+                                                diceTwo:0,
+                                                diceThree:0,
+                                                diceFour:0,
+                                                diceFive:0,
+                                                diceSix:0,
 
                                                 })
+    const [reRollDice,setReRollDice] = useState({
+                                                diceOne:false,
+                                                diceTwo:false,
+                                                diceThree:false,
+                                                diceFour:false,
+                                                diceFive:false,
+                                                diceSix:false,
 
+    })
     function rollDice() {
-        let tempHolder = {}
-        for (let [key, number] of Object.entries(rolledDice)) {
-            number = (Math.floor(Math.random() * 6) + 1)
-            tempHolder[key] = number
-             setRolledDice(tempHolder)
+        let temp = {}
+        for(let [key,value] of Object.entries(reRollDice)){
+            if(value === false){
+                let number = (Math.floor(Math.random() * 6) + 1)
+                temp[key] = number
+                console.log(temp)
+                setRolledDice(temp)
             }
+        }
+        // for (let [key, number] of Object.entries(rolledDice)) {
+        //     number = (Math.floor(Math.random() * 6) + 1)
+        //     tempHolder[key] = number
+        //     setRolledDice(tempHolder)
+        //     }
     }
-    console.log(rolledDice)
+
+    const wantToReroll = (...pickedDice) =>{
+        let reroll = !reRollDice[pickedDice[0]]
+        setReRollDice({...reRollDice,[ pickedDice[0]]: reroll})
+    }
+
+    
     return(
         <div>
-        <button className="button" onClick={rollDice}>ROLL DICE</button>
-        <Dice rolledDice={rolledDice}/>
+        <button onClick={rollDice}>ROLL DICE</button>
+        <Dice rolledDice={rolledDice} 
+              reRollDice={reRollDice}
+              wantToReroll={wantToReroll}
+              />
         </div>
     )
 }

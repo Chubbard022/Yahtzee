@@ -6,15 +6,15 @@ import "../../styles.css"
 const Four = (props) =>{
     console.log(props.keepDice.four)
     return(
-        <div id='props.keepDice.four'>
-            <div id={props.keepDice.four} className="fourth-face">
-                <div id={props.keepDice.four} className="column">
-                    <span id={props.keepDice.four} className="pip"></span>
-                    <span id={props.keepDice.four} className="pip"></span>
+        <div>
+            <div className="fourth-face">
+                <div className="column">
+                    <span className="pip"></span>
+                    <span className="pip"></span>
                 </div>
-                <div id={props.keepDice.four} className="column">
-                    <span id={props.keepDice.four} className="pip"></span>
-                    <span id={props.keepDice.four} className="pip"></span>
+                <div className="column">
+                    <span className="pip"></span>
+                    <span className="pip"></span>
                 </div>
             </div>
         </div>

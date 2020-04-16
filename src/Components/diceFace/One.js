@@ -5,9 +5,9 @@ import "../../styles.css"
 
 const One = (props) =>{
     return(
-        <div id="one">
-            <div id="one" className="second-face">
-                <span id="one" className="first"></span>
+        <div>
+            <div className="second-face">
+                <span className="first"></span>
             </div>
         </div>
     )
