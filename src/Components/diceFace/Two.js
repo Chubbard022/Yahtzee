@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import "../../styles.css"
 
 
-const Two = () =>{
+const Two = (props) =>{
     return(
         <div>
             <div className="second-face">

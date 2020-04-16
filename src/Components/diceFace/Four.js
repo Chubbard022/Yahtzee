@@ -3,7 +3,8 @@ import React, {useState, useEffect} from "react";
 import "../../styles.css"
 
 
-const Four = () =>{
+const Four = (props) =>{
+    console.log(props.keepDice.four)
     return(
         <div>
             <div className="fourth-face">

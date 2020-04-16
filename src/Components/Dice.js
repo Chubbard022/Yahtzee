@@ -10,27 +10,28 @@ import Six from "../Components/diceFace/Six"
 
 import "../styles.css"
 
+
 function Dice(props){
     
     function dicePicker(die){
       switch(die){
         case 1:
-          return <One/>
+          return <One keepDice={keepDice[0]}/>
           break;
         case 2:
-          return <Two />
+          return <Two keepDice={keepDice[1]}/>
           break;
         case 3:
-          return <Three />
+          return <Three keepDice={keepDice[2]}/>
           break;
         case 4:
-          return <Four />
+          return <Four keepDice={keepDice[3]}/>
           break;
         case 5:
-          return <Five />
+          return <Five keepDice={keepDice[4]}/>
           break;
         case 6:
-          return <Six />
+          return <Six keepDice={keepDice[5]}/>
           break;
         default:
           return 
