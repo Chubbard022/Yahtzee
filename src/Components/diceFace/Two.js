@@ -6,9 +6,9 @@ import "../../styles.css"
 const Two = () =>{
     return(
         <div>
-            <div class="second-face">
-                <span class="pip"></span>
-                <span class="pip"></span>
+            <div className="second-face">
+                <span className="pip"></span>
+                <span className="pip"></span>
                 </div>
         </div>
     )

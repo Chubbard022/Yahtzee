@@ -6,8 +6,8 @@ import "../../styles.css"
 const One = () =>{
     return(
         <div>
-            <div class="second-face">
-                <span class="first"></span>
+            <div className="second-face">
+                <span className="first"></span>
             </div>
         </div>
     )

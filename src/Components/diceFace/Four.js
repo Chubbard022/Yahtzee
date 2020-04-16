@@ -6,14 +6,14 @@ import "../../styles.css"
 const Four = () =>{
     return(
         <div>
-            <div class="fourth-face">
-                <div class="column">
-                    <span class="pip"></span>
-                    <span class="pip"></span>
+            <div className="fourth-face">
+                <div className="column">
+                    <span className="pip"></span>
+                    <span className="pip"></span>
                 </div>
-                <div class="column">
-                    <span class="pip"></span>
-                    <span class="pip"></span>
+                <div className="column">
+                    <span className="pip"></span>
+                    <span className="pip"></span>
                 </div>
             </div>
         </div>
