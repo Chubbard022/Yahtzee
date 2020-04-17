@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Dice from "./Dice"
-
+import GameLogic from "./GameLogic"
 
 
 const DiceLogic = () =>{
@@ -20,7 +20,6 @@ const DiceLogic = () =>{
                                                 diceFour:false,
                                                 diceFive:false,
                                                 diceSix:false,
-
     })
     function rollDice() {
         let temp = {}
@@ -44,6 +43,8 @@ const DiceLogic = () =>{
     console.log(rolledDice)
     return(
         <div>
+            <GameLogic rolledDice={rolledDice} />
+            <br/>
         <button onClick={rollDice}>ROLL DICE</button>
         <Dice rolledDice={rolledDice} 
               reRollDice={reRollDice}

@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from "react";
 import Table from "./Table";
-import DiceLogic from "./DiceLogic.js"
 
 import "../styles.css";
 
-export default function GameLogic() {
+export default function GameLogic(props) {
 
   const [testY,setTestY] = useState({gameOneOne: true,
     gameOneTwo: true,
@@ -60,12 +59,108 @@ export default function GameLogic() {
       three: {display: "", Clicked: false}
     }
   })
+  const [valueUpper,setValueUpper] = useState({
+    gameOne: {
+      one: null,
+      two: null,
+      three: null,
+      four: null, 
+      five: null,
+      six: null 
+    },
+    gameTwo: {
+      one: null,
+      two: null,
+      three: null,
+      four: null, 
+      five: null,
+      six: null 
+    },
+    gameThree: {
+      one: null,
+      two: null,
+      three: null,
+      four: null, 
+      five: null,
+      six: null 
+    },
+    gameFour: {
+      one: null,
+      two: null,
+      three: null,
+      four: null, 
+      five: null,
+      six: null 
+    },
+    gameFive: {
+      one: null,
+      two: null,
+      three: null,
+      four: null, 
+      five: null,
+      six: null 
+    },
+    gameSix: {
+      one: null,
+      two: null,
+      three: null,
+      four: null, 
+      five: null,
+      six: null 
+    },
+  })
 
+  const [valueLower,setValueLower] = useState({
+    gameOne: {
+      threeOfaKind: null,
+      fourOfaKind: null,
+      fullHouse: null,
+      smallStraight: null,
+      largeStraight: null,
+      yahtzee: null
+    },
+    gameTwo: {
+      threeOfaKind: null,
+      fourOfaKind: null,
+      fullHouse: null,
+      smallStraight: null,
+      largeStraight: null,
+      yahtzee: null
+    },
+    gameThree: {
+      threeOfaKind: null,
+      fourOfaKind: null,
+      fullHouse: null,
+      smallStraight: null,
+      largeStraight: null,
+      yahtzee: null
+    },
+    gameFour: {
+      threeOfaKind: null,
+      fourOfaKind: null,
+      fullHouse: null,
+      smallStraight: null,
+      largeStraight: null,
+      yahtzee: null
+    },
+    gameFive: {
+      threeOfaKind: null,
+      fourOfaKind: null,
+      fullHouse: null,
+      smallStraight: null,
+      largeStraight: null,
+      yahtzee: null
+    },
+    gameSix: {
+      threeOfaKind: null,
+      fourOfaKind: null,
+      fullHouse: null,
+      smallStraight: null,
+      largeStraight: null,
+      yahtzee: null
+    },
+  })
 
-  function computeScore(e) {
-    let name = e.target.name;
-    score[name] = e.target.value;
-  }
   function getGameBonus(){
     let gameOne = (
       parseInt(score["gameOne ones"], 10) +
@@ -224,12 +319,18 @@ export default function GameLogic() {
     }
 
   }
+
+function diceScore(){
+
+}
+
+
+
+
+  console.log("PROPS",props)
   return (
     <div>
-      <h1>header</h1>
       <Table
-        computeScore={computeScore}
-        upperTotal={upperTotal}
         gameBonus={gameBonus}
         
         getGameBonus={getGameBonus}
@@ -239,12 +340,12 @@ export default function GameLogic() {
         extraYahtzee={extraYahtzee}
         setExtraYahtzee={setExtraYahtzee}
 
+        valueUpper={valueUpper}
+        valueLower={valueLower}
 
       />
       <button className="button" onClick={getUpperTotal}>ADD UP UPPER SECTION</button>
       <button className="button" onClick={getGameBonus}>ADD UP UPPER BONUS</button>
-      <br />
-      <DiceLogic />
     </div>
   );
 }
