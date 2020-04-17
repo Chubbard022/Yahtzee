@@ -16,28 +16,27 @@ function Dice(props){
     function dicePicker(die){
       switch(die){
         case 1:
-          return <One keepDice={keepDice[0]}/>
+          return <One />
           break;
         case 2:
-          return <Two keepDice={keepDice[1]}/>
+          return <Two/>
           break;
         case 3:
-          return <Three keepDice={keepDice[2]}/>
+          return <Three />
           break;
         case 4:
-          return <Four keepDice={keepDice[3]}/>
+          return <Four />
           break;
         case 5:
-          return <Five keepDice={keepDice[4]}/>
+          return <Five />
           break;
         case 6:
-          return <Six keepDice={keepDice[5]}/>
+          return <Six />
           break;
         default:
           return 
       }
     }
-    console.log("PROPS",props)
     return(
         <div className="diceBox">          
          <div  style={props.reRollDice.diceOne ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>props.wantToReroll("diceOne", props.rolledDice.diceOne)}>{dicePicker(props.rolledDice.diceOne)}</div>

@@ -28,15 +28,12 @@ const DiceLogic = () =>{
             if(value === false){
                 let number = (Math.floor(Math.random() * 6) + 1)
                 temp[key] = number
-                console.log(temp)
-                setRolledDice(temp)
+            }else{
+                //if value is true
+                temp[key] = rolledDice[key]
             }
+        setRolledDice(temp)
         }
-        // for (let [key, number] of Object.entries(rolledDice)) {
-        //     number = (Math.floor(Math.random() * 6) + 1)
-        //     tempHolder[key] = number
-        //     setRolledDice(tempHolder)
-        //     }
     }
 
     const wantToReroll = (...pickedDice) =>{
@@ -44,7 +41,7 @@ const DiceLogic = () =>{
         setReRollDice({...reRollDice,[ pickedDice[0]]: reroll})
     }
 
-    
+    console.log(rolledDice)
     return(
         <div>
         <button onClick={rollDice}>ROLL DICE</button>
