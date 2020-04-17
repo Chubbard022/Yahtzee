@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import Dice from "./Dice"
-
+import GameLogic from "./GameLogic"
 
 
 const DiceLogic = () =>{
+    const [clicked,setClicked] = useState(0)
     const [rolledDice,setRolledDice] = useState({
                                                 diceOne:0,
                                                 diceTwo:0,
@@ -20,8 +21,10 @@ const DiceLogic = () =>{
                                                 diceFour:false,
                                                 diceFive:false,
                                                 diceSix:false,
-
     })
+
+
+
     function rollDice() {
         let temp = {}
         for(let [key,value] of Object.entries(reRollDice)){
@@ -32,6 +35,7 @@ const DiceLogic = () =>{
                 //if value is true
                 temp[key] = rolledDice[key]
             }
+        setClicked(clicked + 1)
         setRolledDice(temp)
         }
     }
@@ -44,11 +48,16 @@ const DiceLogic = () =>{
     console.log(rolledDice)
     return(
         <div>
-        <button onClick={rollDice}>ROLL DICE</button>
+            <GameLogic 
+                rolledDice={rolledDice}
+                setRolledDice={setRolledDice}
+            />
+            <br/>
+        {clicked < 3 ? (<button onClick={rollDice}>ROLL DICE</button>) :( <p> Please choose where to score dice</p> )}
         <Dice rolledDice={rolledDice} 
-              reRollDice={reRollDice}
-              wantToReroll={wantToReroll}
-              />
+            reRollDice={reRollDice}
+            wantToReroll={wantToReroll}
+        />
         </div>
     )
 }
