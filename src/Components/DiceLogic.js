@@ -4,6 +4,7 @@ import GameLogic from "./GameLogic"
 
 
 const DiceLogic = () =>{
+    const [clicked,setClicked] = useState(0)
     const [rolledDice,setRolledDice] = useState({
                                                 diceOne:0,
                                                 diceTwo:0,
@@ -21,6 +22,9 @@ const DiceLogic = () =>{
                                                 diceFive:false,
                                                 diceSix:false,
     })
+
+
+
     function rollDice() {
         let temp = {}
         for(let [key,value] of Object.entries(reRollDice)){
@@ -31,6 +35,7 @@ const DiceLogic = () =>{
                 //if value is true
                 temp[key] = rolledDice[key]
             }
+        setClicked(clicked + 1)
         setRolledDice(temp)
         }
     }
@@ -45,7 +50,7 @@ const DiceLogic = () =>{
         <div>
             <GameLogic rolledDice={rolledDice} />
             <br/>
-        <button onClick={rollDice}>ROLL DICE</button>
+        {clicked < 3 ? (<button onClick={rollDice}>ROLL DICE</button>) :( <p> Please choose where to score dice</p> )}
         <Dice rolledDice={rolledDice} 
               reRollDice={reRollDice}
               wantToReroll={wantToReroll}
