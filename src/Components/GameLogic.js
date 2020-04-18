@@ -304,28 +304,33 @@ export default function GameLogic(props) {
   // }
 
 
-  function test(e){
-    let gameNumber = e.target.id.split("-")[0]
-    let boxNumber = e.target.id.split("-")[1]
-    
-    if(extraYahtzee[gameNumber][boxNumber].display == "X"){
-      let removeX = extraYahtzee[gameNumber][boxNumber].display = ""
-      setExtraYahtzee({...extraYahtzee,removeX})
-    }else{
-    let addX = extraYahtzee[gameNumber][boxNumber].display = "X"
-    setExtraYahtzee({...extraYahtzee,addX})
-    }
-
+function test(e){
+  let gameNumber = e.target.id.split("-")[0]
+  let boxNumber = e.target.id.split("-")[1]
+  
+  if(extraYahtzee[gameNumber][boxNumber].display == "X"){
+    let removeX = extraYahtzee[gameNumber][boxNumber].display = ""
+    setExtraYahtzee({...extraYahtzee,removeX})
+  }else{
+  let addX = extraYahtzee[gameNumber][boxNumber].display = "X"
+  setExtraYahtzee({...extraYahtzee,addX})
   }
 
-function diceScore(){
-  console.log("WORKING")
 }
 
-
-
-
-  console.log("PROPS",props)
+function diceScore(e){
+  let idArr = e.target.id.split("-")
+  let total = 0
+  for(let [key,value] of Object.entries(props.rolledDice)){
+    total += value
+  } 
+  if(idArr[2] === "upper"){
+    setValueUpper({...valueUpper, [idArr[0]]: {[idArr[1]]:total}})
+  }
+  else{
+    setValueLower({...valueUpper, [idArr[0]]: {[idArr[1]]:total}})
+  }
+}
   return (
     <div>
       <Table
