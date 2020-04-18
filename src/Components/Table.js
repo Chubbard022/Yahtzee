@@ -19,132 +19,132 @@ function Table(props) {
           <tr>
             <th>1's</th>
             <td>Count 1 for each 1, count only 1's</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-one-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameOne.one}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-one-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameTwo.one}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-one-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameThree.one}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-one-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFour.one}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-one-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFive.one}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-one-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameSix.one}</p>
             </td>
           </tr>
           <tr>
             <th>2's</th>
             <td>Count 2 for each 2, count only 2's</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-two-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameOne.two}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-two-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameTwo.two}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-two-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameThree.two}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-two-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFour.two}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-two-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFive.two}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-two-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameSix.two}</p>
             </td>
           </tr>
           <tr>
             <th>3's</th>
             <td>Count 3 for each 3, count only 3's</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-three-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameOne.three}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-three-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameTwo.three}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-three-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameThree.three}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-three-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFour.three}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-three-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFive.three}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-three-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameSix.three}</p>
             </td>
           </tr>
           <tr>
             <th>4's</th>
             <td>Count 4 for each 4, count only 4's</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-four-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameOne.four}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-four-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameTwo.four}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-four-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameThree.four}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-four-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFour.four}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-four-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFive.four}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-four-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameSix.four}</p>
             </td>
           </tr>
           <tr>
             <th>5's</th>
             <td>Count 5 for each 5, count only 5's</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-five-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameOne.five}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-five-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameTwo.five}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-five-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameThree.five}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-five-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFour.five}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-five-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFive.five}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-five-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameSix.five}</p>
             </td>
           </tr>
           <tr>
             <th>6's</th>
             <td>Count 6 for each 6, count only 6's</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-six-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameOne.six}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-six-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameTwo.six}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-six-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameThree.six}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-six-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFour.six}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-six-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameFive.six}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-six-upper" onClick={props.diceScore}>
               <p>{props.valueUpper.gameSix.six}</p>
             </td>
           </tr>
@@ -191,132 +191,132 @@ function Table(props) {
           <tr>
             <th>3 of a kind</th>
             <td>add upperTotal of dice</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-threeOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameOne.threeOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-threeOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameTwo.threeOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-threeOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameThree.threeOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-threeOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFour.threeOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-threeOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFive.threeOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-threeOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameSix.threeOfaKind}</p>
             </td>
           </tr>
           <tr>
             <th>4 of a kind</th>
             <td>add upperTotal of dice</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-fourOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameOne.fourOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-fourOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameTwo.fourOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-fourOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameThree.fourOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-fourOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFour.fourOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-fourOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFive.fourOfaKind}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-fourOfaKind-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameSix.fourOfaKind}</p>
             </td>
           </tr>
           <tr>
             <th>Full house</th>
             <td>Score 25</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-fullHouse-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameOne.fullHouse}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-fullHouse-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameTwo.fullHouse}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-fullHouse-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameThree.fullHouse}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-fullHouse-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFour.fullHouse}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-fullHouse-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFive.fullHouse}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-fullHouse-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameSix.fullHouse}</p>
             </td>
           </tr>
           <tr>
             <th>sm. straight</th>
             <td>score 30</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-smallStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameOne.smallStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-smallStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameTwo.smallStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-smallStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameThree.smallStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-smallStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFour.smallStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-smallStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFive.smallStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-smallStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameSix.smallStraight}</p>
             </td>
           </tr>
           <tr>
             <th>Lrg. straight</th>
             <td>score 40</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-largeStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameOne.largeStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-largeStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameTwo.largeStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-largeStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameThree.largeStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-largeStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFour.largeStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-largeStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFive.largeStraight}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-largeStraight-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameSix.largeStraight}</p>
             </td>
           </tr>
           <tr>
             <th>YAHTZEE</th>
             <td>score 50</td>
-            <td onClick={props.diceScore}>
+            <td id="gameOne-yahtzee-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameOne.yahtzee}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameTwo-yahtzee-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameTwo.yahtzee}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameThree-yahtzee-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameThree.yahtzee}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFour-yahtzee-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFour.yahtzee}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameFive-yahtzee-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameFive.yahtzee}</p>
             </td>
-            <td onClick={props.diceScore}>
+            <td id="gameSix-yahtzee-lower" onClick={props.diceScore}>
               <p>{props.valueLower.gameSix.yahtzee}</p>
             </td>
           </tr>
