@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react";
 import Table from "./Table";
+import {Score} from "./helperFunctions/Score"
+
+
 
 import "../styles.css";
 
@@ -318,19 +321,79 @@ function test(e){
 
 }
 
+const reset = ()=>{
+  props.setClicked(0)
+  props.setRolledDice({   
+    ...props.rolledDice,                                        
+    diceOne:0,
+    diceTwo:0,
+    diceThree:0,
+    diceFour:0,
+    diceFive:0,
+    diceSix:0,
+  })
+  
+  let temp = {}
+  for(let [key,value] of Object.entries(props.reRollDice)){
+    if(value === true){
+      temp[key] = false
+    }else{
+      temp[key] = value
+    }
+  }
+  props.setReRollDice(temp)
+}
+
 function diceScore(e){
   let idArr = e.target.id.split("-")
   let total = 0
-  for(let [key,value] of Object.entries(props.rolledDice)){
-    total += value
-  } 
+  let condition = Number(idArr[3])
   if(idArr[2] === "upper"){
-    setValueUpper({...valueUpper, [idArr[0]]: {[idArr[1]]:total}})
+    //then grab all values that are related to idArr[3]
+    for(let [key,value] of Object.entries(props.rolledDice)){
+      if(value == condition){
+        total += value
+      }
+    } 
+    setValueUpper({...valueUpper,[idArr[0]]: {...valueUpper[idArr[0]],[idArr[1]]:total}})
+    reset()
   }
   else{
-    setValueLower({...valueUpper, [idArr[0]]: {[idArr[1]]:total}})
+    for(let [key,value] of Object.entries(props.rolledDice)){
+        total += value
+    }
+    switch(idArr[1]){
+      case "threeOfaKind":
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
+          reset()
+        break;
+      case "fourOfaKind":
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
+          reset()
+        break;
+      case "fullHouse":
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:25}})
+          reset()
+        break
+      case "smallStraight":
+        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:30}})
+        reset()
+        break;
+      case "largeStraight":
+        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:40}})
+        reset()
+        break;
+      case "yahtzee":
+        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:50}})
+        reset()
+        break;
+      default:
+        return
+    } 
   }
+
 }
+
   return (
     <div>
       <Table
@@ -349,6 +412,7 @@ function diceScore(e){
       />
       <button className="button">ADD UP UPPER SECTION</button>
       <button className="button">ADD UP UPPER BONUS</button>
+      <Score props={props}/>
     </div>
   );
 }
