@@ -45,12 +45,17 @@ const DiceLogic = () =>{
         setReRollDice({...reRollDice,[ pickedDice[0]]: reroll})
     }
 
-    console.log(rolledDice)
     return(
         <div>
             <GameLogic 
-                rolledDice={rolledDice}
+                setReRollDice={setReRollDice}
+                reRollDice={reRollDice}
+
                 setRolledDice={setRolledDice}
+                rolledDice={rolledDice}
+
+                setClicked={setClicked}
+                clicked={clicked}
             />
             <br/>
         {clicked < 3 ? (<button onClick={rollDice}>ROLL DICE</button>) :( <p> Please choose where to score dice</p> )}
