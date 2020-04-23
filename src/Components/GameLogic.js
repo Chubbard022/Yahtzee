@@ -159,153 +159,55 @@ export default function GameLogic(props) {
     },
   })
 
-  // function getGameBonus(){
-  //   let gameOne = (
-  //     parseInt(score["gameOne ones"], 10) +
-  //     parseInt(score["gameOne twos"], 10) +
-  //     parseInt(score["gameOne threes"], 10) +
-  //     parseInt(score["gameOne fours"], 10) +
-  //     parseInt(score["gameOne fives"], 10) +
-  //     parseInt(score["gameOne sixes"], 10))
+
+  function addGameBonus(){
+    let returnObj = {}
+    for(let [key,value] of Object.entries(valueUpper)){
+      let count = 0
+      for(let [die,num] of Object.entries(value)){
+        count += num
+      }
+      if(count>=63){
+        returnObj[key] = 35
+      }else{
+        returnObj[key] = 0
+      }
+    }
+    setGameBonus(returnObj)
+    return returnObj
+  }
+
+  function addExtraYahtzee(){
+    let returnObj = {}
+    for(let [key,value] of Object.entries(extraYahtzee)){
+      for(let [game,num] of Object.entries(value)){
+        if(num.display === "X"){
+          if(!returnObj[key]){
+            returnObj[key] = 0
+          }
+          returnObj[key] += 100
+        }
+      }
+    }
+    return returnObj
+  }
   
-  //     let gameTwo =(
-  //     parseInt(score["gameTwo ones"], 10) +
-  //     parseInt(score["gameTwo twos"], 10) +
-  //     parseInt(score["gameTwo threes"], 10) +
-  //     parseInt(score["gameTwo fours"], 10) +
-  //     parseInt(score["gameTwo fives"], 10) +
-  //     parseInt(score["gameTwo sixes"], 10))
-  
-  //     let gameThree =(
-  //     parseInt(score["gameThree ones"], 10) +
-  //     parseInt(score["gameThree twos"], 10) +
-  //     parseInt(score["gameThree threes"], 10) +
-  //     parseInt(score["gameThree fours"], 10) +
-  //     parseInt(score["gameThree fives"], 10) +
-  //     parseInt(score["gameThree sixes"], 10))
-  
-  //     let gameFour =(
-  //     parseInt(score["gameFour ones"], 10) +
-  //     parseInt(score["gameFour twos"], 10) +
-  //     parseInt(score["gameFour threes"], 10) +
-  //     parseInt(score["gameFour fours"], 10) +
-  //     parseInt(score["gameFour fives"], 10) +
-  //     parseInt(score["gameFour sixes"], 10))
-  
-  //     let gameFive =(
-  //     parseInt(score["gameFive ones"], 10) +
-  //     parseInt(score["gameFive twos"], 10) +
-  //     parseInt(score["gameFive threes"], 10) +
-  //     parseInt(score["gameFive fours"], 10) +
-  //     parseInt(score["gameFive fives"], 10) +
-  //     parseInt(score["gameFive sixes"], 10))
-  
-  //     let gameSix =(
-  //     parseInt(score["gameSix ones"], 10) +
-  //     parseInt(score["gameSix twos"], 10) +
-  //     parseInt(score["gameSix threes"], 10) +
-  //     parseInt(score["gameSix fours"], 10) +
-  //     parseInt(score["gameSix fives"], 10) +
-  //     parseInt(score["gameSix sixes"], 10))
+  function addUpperScore(){
+    //both are returned objects
+    let bonus = addGameBonus()
+    let extra = addExtraYahtzee()
+    
+    for(let [key,value] of Object.entries(upperTotal)){
+      let count = 0
+      console.log(key,bonus[key],extra[key])
+      for(let [num,val] of Object.entries(valueUpper)){
+        console.log(num,val)
+        //count += key[num][val]
+      }
+    }
 
 
-  //     //check to see if the score is greater than 63, else do nothing
-  //     if(gameOne > 63){
-
-  //       setGameBonus({...gameBonus, gameOne:35})
-  //     }
-  //     if(gameTwo > 63){
-  //       setGameBonus({...gameBonus, gameTwo:35})
-  //     }
-  //     if(gameThree > 63){
-  //       setGameBonus({...gameBonus, gameThree:35})
-  //     }
-  //     if(gameFour > 63){
-  //       setGameBonus({...gameBonus, gameFour:35})
-  //     }
-  //     if(gameFive > 63){
-  //       setGameBonus({...gameBonus, gameFive:35})
-  //     }
-  //     if(gameSix > 63){
-  //       setGameBonus({...gameBonus, gameSix:35})
-  //     }
-  // }
-
-  // function getUpperTotal() {
-  //   let gameOne = (
-  //     parseInt(score["gameOne ones"], 10) +
-  //     parseInt(score["gameOne twos"], 10) +
-  //     parseInt(score["gameOne threes"], 10) +
-  //     parseInt(score["gameOne fours"], 10) +
-  //     parseInt(score["gameOne fives"], 10) +
-  //     parseInt(score["gameOne sixes"], 10))
-  
-  //     let gameTwo =(
-  //     parseInt(score["gameTwo ones"], 10) +
-  //     parseInt(score["gameTwo twos"], 10) +
-  //     parseInt(score["gameTwo threes"], 10) +
-  //     parseInt(score["gameTwo fours"], 10) +
-  //     parseInt(score["gameTwo fives"], 10) +
-  //     parseInt(score["gameTwo sixes"], 10))
-  
-  //     let gameThree =(
-  //     parseInt(score["gameThree ones"], 10) +
-  //     parseInt(score["gameThree twos"], 10) +
-  //     parseInt(score["gameThree threes"], 10) +
-  //     parseInt(score["gameThree fours"], 10) +
-  //     parseInt(score["gameThree fives"], 10) +
-  //     parseInt(score["gameThree sixes"], 10))
-  
-  //     let gameFour =(
-  //     parseInt(score["gameFour ones"], 10) +
-  //     parseInt(score["gameFour twos"], 10) +
-  //     parseInt(score["gameFour threes"], 10) +
-  //     parseInt(score["gameFour fours"], 10) +
-  //     parseInt(score["gameFour fives"], 10) +
-  //     parseInt(score["gameFour sixes"], 10))
-  
-  //     let gameFive =(
-  //     parseInt(score["gameFive ones"], 10) +
-  //     parseInt(score["gameFive twos"], 10) +
-  //     parseInt(score["gameFive threes"], 10) +
-  //     parseInt(score["gameFive fours"], 10) +
-  //     parseInt(score["gameFive fives"], 10) +
-  //     parseInt(score["gameFive sixes"], 10))
-  
-  //     let gameSix =(
-  //     parseInt(score["gameSix ones"], 10) +
-  //     parseInt(score["gameSix twos"], 10) +
-  //     parseInt(score["gameSix threes"], 10) +
-  //     parseInt(score["gameSix fours"], 10) +
-  //     parseInt(score["gameSix fives"], 10) +
-  //     parseInt(score["gameSix sixes"], 10))
-
-  //     if(gameOne > 0){
-  //       gameOne = gameOne + gameBonus.gameOne
-  //       setUpperTotal({...upperTotal, gameOne})
-  //     }
-  //     if(gameTwo  > 0){
-  //       gameTwo = gameTwo + gameBonus.gameTwo
-  //       setUpperTotal({...upperTotal, gameTwo})
-  //     }
-  //     if(gameThree  > 0){
-  //       gameThree = gameThree + gameBonus.gameThree
-  //       setUpperTotal({...upperTotal, gameThree})
-  //     }
-  //     if(gameFour  > 0){
-  //       gameFour = gameFour + gameBonus.gameFour
-  //       setUpperTotal({...upperTotal, gameFour})
-  //     }
-  //     if(gameFive  > 0){
-  //       gameFive = gameFive + gameBonus.gameFive
-  //       setUpperTotal({...upperTotal, gameFive})
-  //     }
-  //     if(gameSix  > 0){
-  //       gameSix = gameSix + gameBonus.gameSix
-  //       setUpperTotal({...upperTotal, gameSix})
-  //     }
-  // }
-
+  }
 
 function test(e){
   let gameNumber = e.target.id.split("-")[0]
@@ -313,10 +215,10 @@ function test(e){
   
   if(extraYahtzee[gameNumber][boxNumber].display == "X"){
     let removeX = extraYahtzee[gameNumber][boxNumber].display = ""
-    setExtraYahtzee({...extraYahtzee,removeX})
+    setExtraYahtzee({...extraYahtzee},[removeX])
   }else{
   let addX = extraYahtzee[gameNumber][boxNumber].display = "X"
-  setExtraYahtzee({...extraYahtzee,addX})
+  setExtraYahtzee({...extraYahtzee},[addX])
   }
 
 }
@@ -410,8 +312,8 @@ function diceScore(e){
         diceScore={diceScore}
 
       />
-      <button className="button">ADD UP UPPER SECTION</button>
-      <button className="button">ADD UP UPPER BONUS</button>
+      <br/>
+      <button className="button" onClick={addUpperScore}>ADD UP UPPER SECTION</button>
       <Score props={props}/>
     </div>
   );
