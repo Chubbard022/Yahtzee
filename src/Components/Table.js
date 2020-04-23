@@ -154,11 +154,9 @@ function Table(props) {
             <td>{props.gameBonus.gameOne}</td>
             <td>
               {props.gameBonus.gameTwo}
-              {/* <input className="gameBonus" name="gameTwo bonus" value="63" /> */}
             </td>
             <td>
               {props.gameBonus.gameThree}
-              {/* <input className="gameBonus" name="gameThree bonus" value="63" /> */}
             </td>
             <td>{props.gameBonus.gameFour}</td>
             <td>{props.gameBonus.gameFive}</td>
