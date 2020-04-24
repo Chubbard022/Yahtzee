@@ -6,7 +6,7 @@ export const Score = (props) =>{
 
     return(
         <div>
-            WOrking
+              
         </div>
     )
 }
