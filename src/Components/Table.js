@@ -391,12 +391,12 @@ function Table(props) {
           <tr>
             <th>TOTAL</th>
             <th> ==></th>
-            <td className="upperTotal">{/* Will Compute upperTotal */}0</td>
-            <td className="upperTotal">{/* Will Compute upperTotal */}0</td>
-            <td className="upperTotal">{/* Will Compute upperTotal */}0</td>
-            <td className="upperTotal">{/* Will Compute upperTotal */}0</td>
-            <td className="upperTotal">{/* Will Compute upperTotal */}0</td>
-            <td className="upperTotal">{/* Will Compute upperTotal */}0</td>
+            <td className="upperTotal">{props.finalScore.gameOne}</td>
+            <td className="upperTotal">{props.finalScore.gameTwo}</td>
+            <td className="upperTotal">{props.finalScore.gameThree}</td>
+            <td className="upperTotal">{props.finalScore.gameFour}</td>
+            <td className="upperTotal">{props.finalScore.gameFive}</td>
+            <td className="upperTotal">{props.finalScore.gameSix}</td>
           </tr>
         </table>
       </div>
