@@ -9,188 +9,195 @@ import "../styles.css";
 export default function GameLogic(props) {
 
 
-  const [upperTotal, setUpperTotal] = useState({
-    gameOne: 0,
-    gameTwo: 0,
-    gameThree: 0,
-    gameFour: 0,
-    gameFive: 0,
-    gameSix: 0
-  });
-  const [gameBonus, setGameBonus] = useState({
-    gameOne: 0,
-    gameTwo: 0,
-    gameThree: 0,
-    gameFour: 0,
-    gameFive: 0,
-    gameSix: 0
-  });
-  const [extraYahtzee,setExtraYahtzee] = useState({
-    gameOne: {
-      one: {display: "", Clicked: false},
-      two: {display: "", Clicked: false},
-      three: {display: "", Clicked: false}
-    },
-    gameTwo: {
-      one: {display: "", Clicked: false},
-      two: {display: "", Clicked: false},
-      three: {display: "", Clicked: false}
-    },
-    gameThree: {
-      one: {display: "", Clicked: false},
-      two: {display: "", Clicked: false},
-      three: {display: "", Clicked: false}
-    },
-    gameFour: {
-      one: {display: "", Clicked: false},
-      two: {display: "", Clicked: false},
-      three: {display: "", Clicked: false}
-    },
-    gameFive: {
-      one: {display: "", Clicked: false},
-      two: {display: "", Clicked: false},
-      three: {display: "", Clicked: false}
-    },
-    gameSix: {
-      one: {display: "", Clicked: false},
-      two: {display: "", Clicked: false},
-      three: {display: "", Clicked: false}
-    }
-  })
-  const [valueUpper,setValueUpper] = useState({
-    gameOne: {
-      one: null,
-      two: null,
-      three: null,
-      four: null, 
-      five: null,
-      six: null 
-    },
-    gameTwo: {
-      one: null,
-      two: null,
-      three: null,
-      four: null, 
-      five: null,
-      six: null 
-    },
-    gameThree: {
-      one: null,
-      two: null,
-      three: null,
-      four: null, 
-      five: null,
-      six: null 
-    },
-    gameFour: {
-      one: null,
-      two: null,
-      three: null,
-      four: null, 
-      five: null,
-      six: null 
-    },
-    gameFive: {
-      one: null,
-      two: null,
-      three: null,
-      four: null, 
-      five: null,
-      six: null 
-    },
-    gameSix: {
-      one: null,
-      two: null,
-      three: null,
-      four: null, 
-      five: null,
-      six: null 
-    },
-  })
-
-  const [valueLower,setValueLower] = useState({
-    gameOne: {
-      threeOfaKind: null,
-      fourOfaKind: null,
-      fullHouse: null,
-      smallStraight: null,
-      largeStraight: null,
-      yahtzee: null
-    },
-    gameTwo: {
-      threeOfaKind: null,
-      fourOfaKind: null,
-      fullHouse: null,
-      smallStraight: null,
-      largeStraight: null,
-      yahtzee: null
-    },
-    gameThree: {
-      threeOfaKind: null,
-      fourOfaKind: null,
-      fullHouse: null,
-      smallStraight: null,
-      largeStraight: null,
-      yahtzee: null
-    },
-    gameFour: {
-      threeOfaKind: null,
-      fourOfaKind: null,
-      fullHouse: null,
-      smallStraight: null,
-      largeStraight: null,
-      yahtzee: null
-    },
-    gameFive: {
-      threeOfaKind: null,
-      fourOfaKind: null,
-      fullHouse: null,
-      smallStraight: null,
-      largeStraight: null,
-      yahtzee: null
-    },
-    gameSix: {
-      threeOfaKind: null,
-      fourOfaKind: null,
-      fullHouse: null,
-      smallStraight: null,
-      largeStraight: null,
-      yahtzee: null
-    },
-  })
-
-
-  function addGameBonus(){
-    let returnObj = {}
-    for(let [key,value] of Object.entries(valueUpper)){
-      let count = 0
-      for(let [die,num] of Object.entries(value)){
-        count += num
-      }
-      if(count>=63){
-        returnObj[key] = 35
-      }else{
-        returnObj[key] = 0
-      }
-    }
-    setGameBonus(returnObj)
-    return returnObj
+const [upperTotal, setUpperTotal] = useState({
+  gameOne: 0,
+  gameTwo: 0,
+  gameThree: 0,
+  gameFour: 0,
+  gameFive: 0,
+  gameSix: 0
+});
+const [gameBonus, setGameBonus] = useState({
+  gameOne: 0,
+  gameTwo: 0,
+  gameThree: 0,
+  gameFour: 0,
+  gameFive: 0,
+  gameSix: 0
+});
+const [extraYahtzee,setExtraYahtzee] = useState({
+  gameOne: {
+    one: {display: "", Clicked: false},
+    two: {display: "", Clicked: false},
+    three: {display: "", Clicked: false}
+  },
+  gameTwo: {
+    one: {display: "", Clicked: false},
+    two: {display: "", Clicked: false},
+    three: {display: "", Clicked: false}
+  },
+  gameThree: {
+    one: {display: "", Clicked: false},
+    two: {display: "", Clicked: false},
+    three: {display: "", Clicked: false}
+  },
+  gameFour: {
+    one: {display: "", Clicked: false},
+    two: {display: "", Clicked: false},
+    three: {display: "", Clicked: false}
+  },
+  gameFive: {
+    one: {display: "", Clicked: false},
+    two: {display: "", Clicked: false},
+    three: {display: "", Clicked: false}
+  },
+  gameSix: {
+    one: {display: "", Clicked: false},
+    two: {display: "", Clicked: false},
+    three: {display: "", Clicked: false}
   }
+})
+const [valueUpper,setValueUpper] = useState({
+  gameOne: {
+    one: null,
+    two: null,
+    three: null,
+    four: null, 
+    five: null,
+    six: null 
+  },
+  gameTwo: {
+    one: null,
+    two: null,
+    three: null,
+    four: null, 
+    five: null,
+    six: null 
+  },
+  gameThree: {
+    one: null,
+    two: null,
+    three: null,
+    four: null, 
+    five: null,
+    six: null 
+  },
+  gameFour: {
+    one: null,
+    two: null,
+    three: null,
+    four: null, 
+    five: null,
+    six: null 
+  },
+  gameFive: {
+    one: null,
+    two: null,
+    three: null,
+    four: null, 
+    five: null,
+    six: null 
+  },
+  gameSix: {
+    one: null,
+    two: null,
+    three: null,
+    four: null, 
+    five: null,
+    six: null 
+  },
+})
+const [valueLower,setValueLower] = useState({
+gameOne: {
+  threeOfaKind: null,
+  fourOfaKind: null,
+  fullHouse: null,
+  smallStraight: null,
+  largeStraight: null,
+  yahtzee: null
+},
+gameTwo: {
+  threeOfaKind: null,
+  fourOfaKind: null,
+  fullHouse: null,
+  smallStraight: null,
+  largeStraight: null,
+  yahtzee: null
+},
+gameThree: {
+  threeOfaKind: null,
+  fourOfaKind: null,
+  fullHouse: null,
+  smallStraight: null,
+  largeStraight: null,
+  yahtzee: null
+},
+gameFour: {
+  threeOfaKind: null,
+  fourOfaKind: null,
+  fullHouse: null,
+  smallStraight: null,
+  largeStraight: null,
+  yahtzee: null
+},
+gameFive: {
+  threeOfaKind: null,
+  fourOfaKind: null,
+  fullHouse: null,
+  smallStraight: null,
+  largeStraight: null,
+  yahtzee: null
+},
+gameSix: {
+  threeOfaKind: null,
+  fourOfaKind: null,
+  fullHouse: null,
+  smallStraight: null,
+  largeStraight: null,
+  yahtzee: null
+},
+})
+const [finalScore,setFinalScore] = useState({
+  gameOne: 0,
+  gameTwo: 0,
+  gameThree: 0,
+  gameFour: 0,
+  gameFive: 0,
+  gameSix: 0
+})
 
-  function addExtraYahtzee(){
-    let returnObj = {}
-    for(let [key,value] of Object.entries(extraYahtzee)){
-      for(let [game,num] of Object.entries(value)){
-        if(num.display === "X"){
-          if(!returnObj[key]){
-            returnObj[key] = 0
-          }
-          returnObj[key] += 100
+
+function addGameBonus(){
+  let returnObj = {}
+  for(let [key,value] of Object.entries(valueUpper)){
+    let count = 0
+    for(let [die,num] of Object.entries(value)){
+      count += num
+    }
+    if(count>=63){
+      returnObj[key] = 35
+    }else{
+      returnObj[key] = 0
+    }
+  }
+  setGameBonus(returnObj)
+  return returnObj
+}
+
+function addExtraYahtzee(){
+  let returnObj = {}
+  for(let [key,value] of Object.entries(extraYahtzee)){
+    for(let [game,num] of Object.entries(value)){
+      if(num.display === "X"){
+        if(!returnObj[key]){
+          returnObj[key] = 0
         }
+        returnObj[key] += 100
       }
     }
-    return returnObj
   }
+  return returnObj
+}
   
 
 function test(e){
@@ -206,7 +213,7 @@ function test(e){
   }
 }
 
-const reset = ()=>{
+function reset(){
   props.setClicked(0)
   props.setRolledDice({   
     ...props.rolledDice,                                        
@@ -287,20 +294,44 @@ function addUpperScore(){
     if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null && val.six !== null ){
       let count = 0
       gameNumber = num
-      console.log(num,val)
       for(let [die,v] of Object.entries(val)){
         count += v 
       }
       count += bonus[gameNumber]
       setUpperTotal({...upperTotal,[gameNumber]: count})
+
+      return {[gameNumber]: count}
     }
   }
 }
+
+function addFinalScore(){
+  let upper = addUpperScore()
+
+  let extraY = addExtraYahtzee()
+  let gameNumber = ""
+
+  for(let [key,val] of Object.entries(valueLower)){
+    if(val.fourOfaKind !== null && val.threeOfaKind !== null && val.fullHouse !== null &&
+      val.smallStraight !==null && val.largeStraight !== null && val.yahtzee){
+        let count = 0
+        gameNumber = key
+        for(let [k,v] of Object.entries(val)){
+          count += v
+        }
+        count += extraY[gameNumber]
+        count += upper[gameNumber]
+        setFinalScore({...finalScore,[gameNumber]: count})
+    }
+  }
+}
+
 
   return (
     <div>
       <Table
         gameBonus={gameBonus}
+        finalScore={finalScore}
         
         upperTotal={upperTotal}
         test={test}
@@ -315,6 +346,7 @@ function addUpperScore(){
       />
       <br/>
       <button className="button" onClick={addUpperScore}>ADD UP UPPER SECTION</button>
+      <button className="button" onClick={addFinalScore}>GET FINAL SCORE</button>
       <Score props={props}/>
     </div>
   );
