@@ -192,22 +192,6 @@ export default function GameLogic(props) {
     return returnObj
   }
   
-  function addUpperScore(){
-    //both are returned objects
-    let bonus = addGameBonus()
-    let extra = addExtraYahtzee()
-    
-    for(let [key,value] of Object.entries(upperTotal)){
-      let count = 0
-      console.log(key,bonus[key],extra[key])
-      for(let [num,val] of Object.entries(valueUpper)){
-        console.log(num,val)
-        //count += key[num][val]
-      }
-    }
-
-
-  }
 
 function test(e){
   let gameNumber = e.target.id.split("-")[0]
@@ -220,7 +204,6 @@ function test(e){
   let addX = extraYahtzee[gameNumber][boxNumber].display = "X"
   setExtraYahtzee({...extraYahtzee},[addX])
   }
-
 }
 
 const reset = ()=>{
@@ -294,6 +277,24 @@ function diceScore(e){
     } 
   }
 
+}
+
+function addUpperScore(){
+  let bonus = addGameBonus()
+  let gameNumber = ""
+
+  for(let [num,val] of Object.entries(valueUpper)){
+    if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null && val.six !== null ){
+      let count = 0
+      gameNumber = num
+      console.log(num,val)
+      for(let [die,v] of Object.entries(val)){
+        count += v 
+      }
+      count += bonus[gameNumber]
+      setUpperTotal({...upperTotal,[gameNumber]: count})
+    }
+  }
 }
 
   return (
