@@ -270,17 +270,16 @@ function diceScore(e){
           }else alert("dice don't add up to a full house")
         break;
       case "smallStraight":
-        //1,2,3,4
-        //2,3,4,5
-        //3,4,5,6
-        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:30}})
-        reset()
+        if(seeIfStraight("smallStraight")){
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:30}})
+          reset()
+        }else alert("dice don't add up to a small straight")
         break;
       case "largeStraight":
-        //1,2,3,4,5,
-        //2,3,4,5,6
-        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:40}})
-        reset()
+        if (seeIfStraight("smallStraight")){
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:40}})
+          reset()
+        }else alert("dice don't add up to a large straight")
         break;
       case "yahtzee":
         if(seeIfValid(5)){
@@ -309,17 +308,56 @@ function seeIfValid(condition){
   }
   return false
 }
+
 function seeIfStraight(type){
   let isValid = false
-  if(type === "smallStraight"){
-    for(let [k,v] of Object.entries(props.rolledDice)){
-      console.log(k,v)
-    }
-  }
-  if(type === "largeStraight"){
+  let tallyUpDie = {}
 
+  for(let [k,v] of Object.entries(props.rolledDice)){
+    (tallyUpDie[v]) ? (tallyUpDie[v] += 1) : (tallyUpDie[v] = 1)
   }
-  //return isValid
+  switch(type){
+    case "smallStraight":
+      (( 
+        (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4]) 
+        || 
+        (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
+        ||
+        (tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
+      ) ?
+        isValid=true : null)
+      break;
+    case "largeStraight":
+    (
+      (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
+      || 
+      (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
+    ) ?
+    isValid=true : null
+    break;
+    default:
+      return
+  }
+  // if(type === "smallStraight"){
+  //     ( 
+  //       (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4]) 
+  //       || 
+  //       (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
+  //       ||
+  //       (tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
+  //     ) ?
+  //       isValid=true : null
+  // }
+  
+  // if(type === "largeStraight"){
+  //     (
+  //       (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
+  //       || 
+  //       (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
+  //     ) ?
+  //     isValid=true : null
+  // }
+  return isValid
 }
 
 
