@@ -64,7 +64,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameTwo: {
     one: null,
@@ -72,7 +71,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameThree: {
     one: null,
@@ -80,7 +78,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameFour: {
     one: null,
@@ -88,7 +85,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameFive: {
     one: null,
@@ -96,7 +92,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameSix: {
     one: null,
@@ -104,7 +99,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
 })
 const [valueLower,setValueLower] = useState({
@@ -240,6 +234,7 @@ function diceScore(e){
   let idArr = e.target.id.split("-")
   let total = 0
   let condition = Number(idArr[3])
+
   if(idArr[2] === "upper"){
     //then grab all values that are related to idArr[3]
     for(let [key,value] of Object.entries(props.rolledDice)){
@@ -254,30 +249,43 @@ function diceScore(e){
     for(let [key,value] of Object.entries(props.rolledDice)){
         total += value
     }
+
     switch(idArr[1]){
       case "threeOfaKind":
+          if(seeIfValid(3)){
           setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
           reset()
+          }else alert("dice don't add up to a three of a kind")
         break;
       case "fourOfaKind":
-          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
-          reset()
+          if(seeIfValid(4)){
+            setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
+            reset()
+          }else alert("dice don't add up to a four of a kind")
         break;
       case "fullHouse":
+          if(seeIfValid(3) && seeIfValid(2)){
           setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:25}})
           reset()
-        break
+          }else alert("dice don't add up to a full house")
+        break;
       case "smallStraight":
-        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:30}})
-        reset()
+        if(seeIfStraight("smallStraight")){
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:30}})
+          reset()
+        }else alert("dice don't add up to a small straight")
         break;
       case "largeStraight":
-        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:40}})
-        reset()
+        if (seeIfStraight("smallStraight")){
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:40}})
+          reset()
+        }else alert("dice don't add up to a large straight")
         break;
       case "yahtzee":
-        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:50}})
-        reset()
+        if(seeIfValid(5)){
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:50}})
+          reset()
+        }else alert("dice don't add up to yahtzee")
         break;
       default:
         return
@@ -286,12 +294,79 @@ function diceScore(e){
 
 }
 
+function seeIfValid(condition){
+  let tallyUpDie = {}
+  for(let [k,v] of Object.entries(props.rolledDice)){
+    if(tallyUpDie[v]){
+      tallyUpDie[v] += 1
+      if(tallyUpDie[v] === condition){
+        return true
+      }
+    }else{
+      tallyUpDie[v] = 1
+    }
+  }
+  return false
+}
+
+function seeIfStraight(type){
+  let isValid = false
+  let tallyUpDie = {}
+
+  for(let [k,v] of Object.entries(props.rolledDice)){
+    (tallyUpDie[v]) ? (tallyUpDie[v] += 1) : (tallyUpDie[v] = 1)
+  }
+  switch(type){
+    case "smallStraight":
+      (( 
+        (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4]) 
+        || 
+        (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
+        ||
+        (tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
+      ) ?
+        isValid=true : null)
+      break;
+    case "largeStraight":
+    (
+      (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
+      || 
+      (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
+    ) ?
+    isValid=true : null
+    break;
+    default:
+      return
+  }
+  // if(type === "smallStraight"){
+  //     ( 
+  //       (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4]) 
+  //       || 
+  //       (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
+  //       ||
+  //       (tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
+  //     ) ?
+  //       isValid=true : null
+  // }
+  
+  // if(type === "largeStraight"){
+  //     (
+  //       (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
+  //       || 
+  //       (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
+  //     ) ?
+  //     isValid=true : null
+  // }
+  return isValid
+}
+
+
 function addUpperScore(){
   let bonus = addGameBonus()
   let gameNumber = ""
 
   for(let [num,val] of Object.entries(valueUpper)){
-    if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null && val.six !== null ){
+    if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null){
       let count = 0
       gameNumber = num
       for(let [die,v] of Object.entries(val)){
