@@ -234,6 +234,7 @@ function diceScore(e){
   let idArr = e.target.id.split("-")
   let total = 0
   let condition = Number(idArr[3])
+
   if(idArr[2] === "upper"){
     //then grab all values that are related to idArr[3]
     for(let [key,value] of Object.entries(props.rolledDice)){
@@ -248,31 +249,44 @@ function diceScore(e){
     for(let [key,value] of Object.entries(props.rolledDice)){
         total += value
     }
+
     switch(idArr[1]){
       case "threeOfaKind":
-          //console.log(e,key,value)
+          if(seeIfValid(3)){
           setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
           reset()
+          }else alert("dice don't add up to a three of a kind")
         break;
       case "fourOfaKind":
-          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
-          reset()
+          if(seeIfValid(4)){
+            setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
+            reset()
+          }else alert("dice don't add up to a four of a kind")
         break;
       case "fullHouse":
+          if(seeIfValid(3) && seeIfValid(2)){
           setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:25}})
           reset()
-        break
+          }else alert("dice don't add up to a full house")
+        break;
       case "smallStraight":
+        //1,2,3,4
+        //2,3,4,5
+        //3,4,5,6
         setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:30}})
         reset()
         break;
       case "largeStraight":
+        //1,2,3,4,5,
+        //2,3,4,5,6
         setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:40}})
         reset()
         break;
       case "yahtzee":
-        setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:50}})
-        reset()
+        if(seeIfValid(5)){
+          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:50}})
+          reset()
+        }else alert("dice don't add up to yahtzee")
         break;
       default:
         return
@@ -280,6 +294,34 @@ function diceScore(e){
   }
 
 }
+
+function seeIfValid(condition){
+  let tallyUpDie = {}
+  for(let [k,v] of Object.entries(props.rolledDice)){
+    if(tallyUpDie[v]){
+      tallyUpDie[v] += 1
+      if(tallyUpDie[v] === condition){
+        return true
+      }
+    }else{
+      tallyUpDie[v] = 1
+    }
+  }
+  return false
+}
+function seeIfStraight(type){
+  let isValid = false
+  if(type === "smallStraight"){
+    for(let [k,v] of Object.entries(props.rolledDice)){
+      console.log(k,v)
+    }
+  }
+  if(type === "largeStraight"){
+
+  }
+  //return isValid
+}
+
 
 function addUpperScore(){
   let bonus = addGameBonus()
