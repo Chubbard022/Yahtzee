@@ -11,7 +11,6 @@ const DiceLogic = () =>{
                                                 diceThree:0,
                                                 diceFour:0,
                                                 diceFive:0,
-                                                diceSix:0,
 
                                                 })
     const [reRollDice,setReRollDice] = useState({
@@ -20,7 +19,6 @@ const DiceLogic = () =>{
                                                 diceThree:false,
                                                 diceFour:false,
                                                 diceFive:false,
-                                                diceSix:false,
     })
 
 

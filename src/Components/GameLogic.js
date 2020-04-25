@@ -64,7 +64,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameTwo: {
     one: null,
@@ -72,7 +71,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameThree: {
     one: null,
@@ -80,7 +78,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameFour: {
     one: null,
@@ -88,7 +85,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameFive: {
     one: null,
@@ -96,7 +92,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
   gameSix: {
     one: null,
@@ -104,7 +99,6 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
-    six: null 
   },
 })
 const [valueLower,setValueLower] = useState({
@@ -256,6 +250,7 @@ function diceScore(e){
     }
     switch(idArr[1]){
       case "threeOfaKind":
+          //console.log(e,key,value)
           setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
           reset()
         break;
@@ -291,7 +286,7 @@ function addUpperScore(){
   let gameNumber = ""
 
   for(let [num,val] of Object.entries(valueUpper)){
-    if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null && val.six !== null ){
+    if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null){
       let count = 0
       gameNumber = num
       for(let [die,v] of Object.entries(val)){
