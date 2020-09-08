@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react"
+import React from "react"
 
 import One from "../Components/diceFace/One"
 import Two from "../Components/diceFace/Two"
@@ -11,7 +11,7 @@ import Six from "../Components/diceFace/Six"
 import "../styles.css"
 
 
-function Dice(props){
+function Dice({reRollDice,wantToReroll,rolledDice}){
     
     function dicePicker(die){
       switch(die){
@@ -39,15 +39,15 @@ function Dice(props){
     }
     return(
         <div className="diceBox">          
-          <div  style={props.reRollDice.diceOne ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>props.wantToReroll("diceOne", props.rolledDice.diceOne)}>{dicePicker(props.rolledDice.diceOne)}</div>
+          <div  style={reRollDice.diceOne ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>wantToReroll("diceOne",rolledDice.diceOne)}>{dicePicker(rolledDice.diceOne)}</div>
 
-          <div style={props.reRollDice.diceTwo ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>props.wantToReroll("diceTwo", props.rolledDice.diceTwo)}>{dicePicker(props.rolledDice.diceTwo)}</div>
+          <div style={reRollDice.diceTwo ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>wantToReroll("diceTwo", rolledDice.diceTwo)}>{dicePicker(rolledDice.diceTwo)}</div>
 
-          <div style={props.reRollDice.diceThree ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>props.wantToReroll("diceThree", props.rolledDice.diceThree)}>{dicePicker(props.rolledDice.diceThree)}</div>
+          <div style={reRollDice.diceThree ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>wantToReroll("diceThree", rolledDice.diceThree)}>{dicePicker(rolledDice.diceThree)}</div>
 
-          <div style={props.reRollDice.diceFour ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>props.wantToReroll("diceFour", props.rolledDice.diceFour)}>{dicePicker(props.rolledDice.diceFour)}</div>
+          <div style={reRollDice.diceFour ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>wantToReroll("diceFour", rolledDice.diceFour)}>{dicePicker(rolledDice.diceFour)}</div>
 
-          <div style={props.reRollDice.diceFive ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>props.wantToReroll("diceFive", props.rolledDice.diceFive)}>{dicePicker(props.rolledDice.diceFive)}</div>
+          <div style={reRollDice.diceFive ? {boxShadow:"13px 21px 22px 16px rgba(156,153,156,1)"} : null } onClick={()=>wantToReroll("diceFive", rolledDice.diceFive)}>{dicePicker(rolledDice.diceFive)}</div>
         </div>
     )
 }

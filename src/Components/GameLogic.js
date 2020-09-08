@@ -2,8 +2,6 @@ import React, {useState, useEffect} from "react";
 import Table from "./Table";
 import {Score} from "./helperFunctions/Score"
 
-
-
 import "../styles.css";
 
 export default function GameLogic(props) {
@@ -17,6 +15,7 @@ const [upperTotal, setUpperTotal] = useState({
   gameFive: 0,
   gameSix: 0
 });
+
 const [gameBonus, setGameBonus] = useState({
   gameOne: 0,
   gameTwo: 0,
@@ -25,6 +24,7 @@ const [gameBonus, setGameBonus] = useState({
   gameFive: 0,
   gameSix: 0
 });
+
 const [extraYahtzee,setExtraYahtzee] = useState({
   gameOne: {
     one: {display: "", Clicked: false},
@@ -229,18 +229,18 @@ function reset(){
 }
 
 function diceScore(e){
-  let idArr = e.target.id.split("-")
+  let scoreCardCell = e.target.id.split("-")
   let total = 0
-  let condition = Number(idArr[3])
+  let condition = Number(scoreCardCell[3])
 
-  if(idArr[2] === "upper"){
-    //then grab all values that are related to idArr[3]
+  if(scoreCardCell[2] === "upper"){
+    //then grab all values that are related to scoreCardCell[3]
     for(let [key,value] of Object.entries(props.rolledDice)){
       if(value == condition){
         total += value
       }
     } 
-    setValueUpper({...valueUpper,[idArr[0]]: {...valueUpper[idArr[0]],[idArr[1]]:total}})
+    setValueUpper({...valueUpper,[scoreCardCell[0]]: {...valueUpper[scoreCardCell[0]],[scoreCardCell[1]]:total}})
     reset()
   }
   else{
@@ -248,69 +248,74 @@ function diceScore(e){
         total += value
     }
 
-    switch(idArr[1]){
+    switch(scoreCardCell[1]){
       case "threeOfaKind":
           if(seeIfValid(3)){
-            setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
+            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:total}})
             reset()
+            break;
           }else {
             alert("dice don't add up to a three of a kind")
-            setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:0}})
+            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:0}})
             reset()
+            break;
           }
-        break;
       case "fourOfaKind":
           if(seeIfValid(4)){
-            setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:total}})
+            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:total}})
             reset()
+            break;
           }else {
             alert("dice don't add up to a four of a kind")
-            setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:0}})
+            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:0}})
             reset()
+            break;
           }
-        break;
       case "fullHouse":
           if(seeIfValid(3) && seeIfValid(2)){
-            setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:25}})
+            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:25}})
             reset()
+            break;
           }else{
             alert("dice don't add up to a full house")
-            setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:0}})
+            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:0}})
             reset()
+            break;
           }
-        break;
       case "smallStraight":
         if(seeIfStraight("smallStraight")){
-          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:30}})
+          setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:30}})
           reset()
+          break;
         }else{
           alert("dice don't add up to a small straight")
-          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:0}})
-          reset()
+          setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:0}})
+          break;
         }
-        break;
       case "largeStraight":
         if (seeIfStraight("smallStraight")){
-          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:40}})
+          setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:40}})
           reset()
+          break;
         }else{
           alert("dice don't add up to a large straight")
-          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:0}})
+          setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:0}})
           reset()
+          break;
         }
-        break;
       case "yahtzee":
         if(seeIfValid(5)){
-          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:50}})
+          setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:50}})
           reset()
+          break;
         }else{
           alert("dice don't add up to a yahtzee")
-          setValueLower({...valueLower,[idArr[0]]: {...valueLower[idArr[0]],[idArr[1]]:0}})
+          setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:0}})
           reset()
+          break;
         }
-        break;
       default:
-        return
+        break; 
     } 
   }
 }
@@ -363,16 +368,14 @@ function seeIfStraight(type){
   return isValid
 }
 
-function addUpperScore(){
+function addUpperScore(valueUpper){
   let bonus = addGameBonus()
-  let gameNumber = ""
 
-  for(let [num,val] of Object.entries(valueUpper)){
+  for(let [gameNumber,val] of Object.entries(valueUpper)){
     if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null){
       let count = 0
-      gameNumber = num
-      for(let [die,v] of Object.entries(val)){
-        count += v 
+      for(let [die,score] of Object.entries(val)){
+        count += score; 
       }
       count += bonus[gameNumber]
       setUpperTotal({...upperTotal,[gameNumber]: count})
@@ -386,13 +389,11 @@ function addFinalScore(){
   let upper = addUpperScore()
 
   let extraY = addExtraYahtzee()
-  let gameNumber = ""
 
-  for(let [key,val] of Object.entries(valueLower)){
+  for(let [gameNumber,val] of Object.entries(valueLower)){
     if(val.fourOfaKind !== null && val.threeOfaKind !== null && val.fullHouse !== null &&
       val.smallStraight !==null && val.largeStraight !== null && val.yahtzee){
-        let count = 0
-        gameNumber = key
+        let count = 0;
         if(extraY[gameNumber]){
           count += extraY[gameNumber]
         }
@@ -415,7 +416,6 @@ function addFinalScore(){
         test={test}
 
         extraYahtzee={extraYahtzee}
-        setExtraYahtzee={setExtraYahtzee}
 
         valueUpper={valueUpper}
         valueLower={valueLower}
