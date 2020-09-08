@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Dice from "./Dice"
 import GameLogic from "./GameLogic"
 
@@ -24,18 +24,21 @@ const DiceLogic = () =>{
 
 
     function rollDice() {
-        let temp = {}
+        setClicked(clicked+1)
+        setRolledDice(randomizeDice(reRollDice,rolledDice))
+    }
+
+    function randomizeDice(reRollDice,rolledDice){
+        let tempObj = {};
         for(let [key,value] of Object.entries(reRollDice)){
             if(value === false){
                 let number = (Math.floor(Math.random() * 6) + 1)
-                temp[key] = number
+                tempObj[key] = number;
             }else{
-                //if value is true
-                temp[key] = rolledDice[key]
+                tempObj[key] = rolledDice[key];
             }
-        setClicked(clicked + 1)
-        setRolledDice(temp)
         }
+        return tempObj;
     }
 
     const wantToReroll = (...pickedDice) =>{
@@ -67,6 +70,3 @@ const DiceLogic = () =>{
 
 export default DiceLogic
 
-
-// eventually click on the dice that need to be updated, put those into an array or object
-    // pass that object into the function that will reroll those dice
