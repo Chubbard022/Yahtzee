@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+
+import {getValues} from "./helperFunctions/objectHelperFunc"
 import Table from "./Table";
 import {Score} from "./helperFunctions/Score"
-
 import "../styles.css";
 
 export default function GameLogic(props) {
@@ -233,9 +234,14 @@ function diceScore(e){
   let total = 0
   let condition = Number(scoreCardCell[3])
 
+
   if(scoreCardCell[2] === "upper"){
-    //then grab all values that are related to scoreCardCell[3]
+    for(let values of Object.values(props.rolledDice)){
+      getValues()
+      console.log("____VALUE1___",values)
+    }
     for(let [key,value] of Object.entries(props.rolledDice)){
+      console.log("____VALUE2___",value)
       if(value == condition){
         total += value
       }
@@ -339,6 +345,7 @@ function seeIfStraight(type){
   let isValid = false
   let tallyUpDie = {}
 
+  //change to object.value within object.assign
   for(let [k,v] of Object.entries(props.rolledDice)){
     (tallyUpDie[v]) ? (tallyUpDie[v] += 1) : (tallyUpDie[v] = 1)
   }
@@ -371,12 +378,14 @@ function seeIfStraight(type){
 function addUpperScore(valueUpper){
   let bonus = addGameBonus()
 
+  console.log(valueUpper)
   for(let [gameNumber,val] of Object.entries(valueUpper)){
     if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null){
       let count = 0
       for(let [die,score] of Object.entries(val)){
         count += score; 
       }
+      console.log(count)
       count += bonus[gameNumber]
       setUpperTotal({...upperTotal,[gameNumber]: count})
 
@@ -386,7 +395,7 @@ function addUpperScore(valueUpper){
 }
 
 function addFinalScore(){
-  let upper = addUpperScore()
+  let upper = addUpperScore(valueUpper)
 
   let extraY = addExtraYahtzee()
 
