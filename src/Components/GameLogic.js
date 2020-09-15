@@ -1,11 +1,20 @@
 import React, {useState} from "react";
-
-import {getValues} from "./helperFunctions/objectHelperFunc"
-import Table from "./Table";
-import {Score} from "./helperFunctions/Score"
+import Table from"./Table";
+import {Score} from "./helperFunctions/Score";
 import "../styles.css";
+import { object } from "prop-types";
+import { 
+  getValues,
+  objectAssigVal,
+  doubleObjAsigVal,
+  objectAssignKeyVal,
+  objectKey,
+  objectVal,
+  seeIfValid,
+  seeIfStraight
+  } from "./helperFunctions/objectHelperFunc";
 
-export default function GameLogic(props) {
+export function GameLogic(props) {
 
 
 const [upperTotal, setUpperTotal] = useState({
@@ -161,7 +170,7 @@ const [finalScore,setFinalScore] = useState({
   gameSix: 0
 })
 
-function addGameBonus(){
+function addGameBonus(valueUpper){
   let returnObj = {}
   for(let [key,value] of Object.entries(valueUpper)){
     let count = 0
@@ -231,33 +240,24 @@ function reset(){
 
 function diceScore(e){
   let scoreCardCell = e.target.id.split("-")
-  let total = 0
+  let total =0;
   let condition = Number(scoreCardCell[3])
 
-
+  //adding up dice for upper section
   if(scoreCardCell[2] === "upper"){
-    for(let values of Object.values(props.rolledDice)){
-      getValues()
-      console.log("____VALUE1___",values)
-    }
-    for(let [key,value] of Object.entries(props.rolledDice)){
-      console.log("____VALUE2___",value)
-      if(value == condition){
-        total += value
-      }
-    } 
-    setValueUpper({...valueUpper,[scoreCardCell[0]]: {...valueUpper[scoreCardCell[0]],[scoreCardCell[1]]:total}})
+    let upperTotal = objectVal(props.rolledDice,condition);
+    setValueUpper({...valueUpper,[scoreCardCell[0]]: {...valueUpper[scoreCardCell[0]],[scoreCardCell[1]]:upperTotal}})
     reset()
   }
   else{
-    for(let [key,value] of Object.entries(props.rolledDice)){
-        total += value
-    }
+
+    // adding up dice score for lower section
+    let lowerTotal = objectVal(props.rolledDice)
 
     switch(scoreCardCell[1]){
       case "threeOfaKind":
-          if(seeIfValid(3)){
-            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:total}})
+          if(seeIfValid(props.rolledDice,3)){
+            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:lowerTotal}})
             reset()
             break;
           }else {
@@ -267,8 +267,8 @@ function diceScore(e){
             break;
           }
       case "fourOfaKind":
-          if(seeIfValid(4)){
-            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:total}})
+          if(seeIfValid(props.rolledDice,4)){
+            setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:lowerTotal}})
             reset()
             break;
           }else {
@@ -278,7 +278,7 @@ function diceScore(e){
             break;
           }
       case "fullHouse":
-          if(seeIfValid(3) && seeIfValid(2)){
+          if(seeIfValid(props.rolledDice,3) && seeIfValid(props.rolledDice,2)){
             setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:25}})
             reset()
             break;
@@ -289,7 +289,7 @@ function diceScore(e){
             break;
           }
       case "smallStraight":
-        if(seeIfStraight("smallStraight")){
+        if(seeIfStraight(props.rolledDice,"smallStraight")){
           setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:30}})
           reset()
           break;
@@ -299,7 +299,7 @@ function diceScore(e){
           break;
         }
       case "largeStraight":
-        if (seeIfStraight("smallStraight")){
+        if (seeIfStraight(props.rolledDice,"smallStraight")){
           setValueLower({...valueLower,[scoreCardCell[0]]: {...valueLower[scoreCardCell[0]],[scoreCardCell[1]]:40}})
           reset()
           break;
@@ -324,55 +324,6 @@ function diceScore(e){
         break; 
     } 
   }
-}
-
-function seeIfValid(condition){
-  let tallyUpDie = {}
-  for(let [k,v] of Object.entries(props.rolledDice)){
-    if(tallyUpDie[v]){
-      tallyUpDie[v] += 1
-      if(tallyUpDie[v] === condition){
-        return true
-      }
-    }else{
-      tallyUpDie[v] = 1
-    }
-  }
-  return false
-}
-
-function seeIfStraight(type){
-  let isValid = false
-  let tallyUpDie = {}
-
-  //change to object.value within object.assign
-  for(let [k,v] of Object.entries(props.rolledDice)){
-    (tallyUpDie[v]) ? (tallyUpDie[v] += 1) : (tallyUpDie[v] = 1)
-  }
-  switch(type){
-    case "smallStraight":
-      if ((tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4]) 
-          || 
-          (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
-          ||
-          (tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
-        ){
-          isValid = true
-          }
-      break;
-    case "largeStraight":
-    if (
-      (tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5]) 
-      || 
-      (tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4] && tallyUpDie[5] && tallyUpDie[6]) 
-    ){
-      isValid = true
-    }
-    break;
-    default:
-      return
-  } 
-  return isValid
 }
 
 function addUpperScore(valueUpper){
