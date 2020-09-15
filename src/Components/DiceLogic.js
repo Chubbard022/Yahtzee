@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Dice from "./Dice"
-import GameLogic from "./GameLogic"
+import {GameLogic} from "./GameLogic"
 
 
 const DiceLogic = () =>{

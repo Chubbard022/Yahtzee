@@ -1,5 +1,4 @@
 import React from "react";
-import GameLogic from "./Components/GameLogic";
 import DiceLogic from "./Components/DiceLogic"
 import "./styles.css";
 
