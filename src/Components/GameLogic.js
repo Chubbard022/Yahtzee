@@ -4,14 +4,10 @@ import {Score} from "./helperFunctions/Score";
 import "../styles.css";
 import { object } from "prop-types";
 import { 
-  getValues,
-  objectAssigVal,
-  doubleObjAsigVal,
-  objectAssignKeyVal,
-  objectKey,
   objectVal,
   seeIfValid,
-  seeIfStraight
+  seeIfStraight,
+  findDiceToReroll
   } from "./helperFunctions/objectHelperFunc";
 
 export function GameLogic(props) {
@@ -67,6 +63,7 @@ const [extraYahtzee,setExtraYahtzee] = useState({
     three: {display: "", Clicked: false}
   }
 })
+
 const [valueUpper,setValueUpper] = useState({
   gameOne: {
     one: null,
@@ -74,6 +71,7 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
+    six: null
   },
   gameTwo: {
     one: null,
@@ -81,6 +79,7 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
+    six: null
   },
   gameThree: {
     one: null,
@@ -88,6 +87,7 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
+    six: null
   },
   gameFour: {
     one: null,
@@ -95,6 +95,7 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
+    six: null
   },
   gameFive: {
     one: null,
@@ -102,6 +103,7 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
+    six: null
   },
   gameSix: {
     one: null,
@@ -109,6 +111,7 @@ const [valueUpper,setValueUpper] = useState({
     three: null,
     four: null, 
     five: null,
+    six: null
   },
 })
 const [valueLower,setValueLower] = useState({
@@ -170,27 +173,10 @@ const [finalScore,setFinalScore] = useState({
   gameSix: 0
 })
 
-function addGameBonus(valueUpper){
-  let returnObj = {}
-  for(let [key,value] of Object.entries(valueUpper)){
-    let count = 0
-    for(let [die,num] of Object.entries(value)){
-      count += num
-    }
-    if(count>=63){
-      returnObj[key] = 35
-    }else{
-      returnObj[key] = 0
-    }
-  }
-  setGameBonus(returnObj)
-  return returnObj
-}
-
 function addExtraYahtzee(){
   let returnObj = {}
   for(let [key,value] of Object.entries(extraYahtzee)){
-    for(let [game,num] of Object.entries(value)){
+    for(let num of Object.values(value)){
       if(num.display === "X"){
         if(!returnObj[key]){
           returnObj[key] = 0
@@ -215,6 +201,7 @@ function test(e){
   }
 }
 
+//resetting dice after rerolling.
 function reset(){
   props.setClicked(0)
   props.setRolledDice({   
@@ -226,16 +213,8 @@ function reset(){
     diceFive:0,
     diceSix:0,
   })
-  
-  let temp = {}
-  for(let [key,value] of Object.entries(props.reRollDice)){
-    if(value === true){
-      temp[key] = false
-    }else{
-      temp[key] = value
-    }
-  }
-  props.setReRollDice(temp)
+ 
+  props.setReRollDice(findDiceToReroll(props.reRollDice))
 }
 
 function diceScore(e){
@@ -326,20 +305,22 @@ function diceScore(e){
   }
 }
 
-function addUpperScore(valueUpper){
-  let bonus = addGameBonus()
 
-  console.log(valueUpper)
+//goes through upper game card and adds up all points and checks for game bonus
+function addUpperScore(){
   for(let [gameNumber,val] of Object.entries(valueUpper)){
     if(val.one !== null && val.two !== null && val.three !== null && val.four !== null && val.five !== null){
       let count = 0
-      for(let [die,score] of Object.entries(val)){
+      for(let score of Object.values(val)){
         count += score; 
       }
-      console.log(count)
-      count += bonus[gameNumber]
-      setUpperTotal({...upperTotal,[gameNumber]: count})
-
+      //if game bonus was acheived or not
+      if(count >=63){
+        setGameBonus({...upperTotal,[gameNumber]: 35})
+        setUpperTotal({...upperTotal,[gameNumber]: count+35})
+      }else{
+        setUpperTotal({...upperTotal,[gameNumber]: count})
+      }
       return {[gameNumber]: count}
     }
   }
