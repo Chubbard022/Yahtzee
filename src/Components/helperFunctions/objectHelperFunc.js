@@ -48,21 +48,20 @@ function objectKey(){
 function seeIfValid(obj,condition){
     console.log("HERE CHECKING CONDITION")
     let tallyUpDie = {}
-    for(let [k,v] of Object.entries(obj)){
-    if(tallyUpDie[v]){
-        tallyUpDie[v] += 1
-        if(tallyUpDie[v] === condition){
-        
-        return true
+    for(let value of Object.values(obj)){
+        if(tallyUpDie[value]){
+            tallyUpDie[value] += 1
+            if(tallyUpDie[value] === condition){
+                return true
+            }
+        }else{
+            tallyUpDie[value] = 1
         }
-    }else{
-        tallyUpDie[v] = 1
-    }
     }
     return false
 }
 
-function seeIfStraight(obj,type){
+function seeIfStraight(obj,typeOfStraight){
     let isValid = false
     let tallyUpDie = {}
 
@@ -70,7 +69,7 @@ function seeIfStraight(obj,type){
     for(let value of Object.values(obj)){
     (tallyUpDie[value]) ? (tallyUpDie[value] += 1) : (tallyUpDie[value] = 1)
     }
-    switch(type){
+    switch(typeOfStraight){
     case "smallStraight":
         if ((tallyUpDie[1] && tallyUpDie[2] && tallyUpDie[3] && tallyUpDie[4]) 
             || 
@@ -96,6 +95,18 @@ function seeIfStraight(obj,type){
     return isValid
 }
 
+function findDiceToReroll(obj){
+    let temp = {}
+    for(let [key,value] of Object.entries(obj)){
+      if(value === true){
+        temp[key] = false
+      }else{
+        temp[key] = value
+      }
+    }
+    return temp;
+}
+
 export {
     getValues,
     objectAssigVal,
@@ -104,5 +115,6 @@ export {
     objectKey,
     objectVal,
     seeIfValid,
-    seeIfStraight
+    seeIfStraight,
+    findDiceToReroll
 }

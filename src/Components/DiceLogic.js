@@ -58,12 +58,15 @@ const DiceLogic = () =>{
                 setClicked={setClicked}
                 clicked={clicked}
             />
+
             <br/>
-        {clicked < 3 ? (<button onClick={rollDice}>ROLL DICE</button>) :( <p> Please choose where to score dice</p> )}
-        <Dice rolledDice={rolledDice} 
-            reRollDice={reRollDice}
-            wantToReroll={wantToReroll}
-        />
+            {/* Checking to see if player has rerolled dice three times, if so, prints message */}
+            {clicked < 3 ? (<button onClick={rollDice}>ROLL DICE</button>) :( <p> Please choose where to score dice</p> )}
+            
+            <Dice rolledDice={rolledDice} 
+                reRollDice={reRollDice}
+                wantToReroll={wantToReroll}
+            />
         </div>
     )
 }
